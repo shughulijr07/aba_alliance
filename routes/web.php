@@ -18,6 +18,8 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SystemUsersController;
 use App\Mail\PasswordReset;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 Auth::routes();
@@ -34,7 +36,7 @@ Route::get('/send_travel_request',function(){
 
 
 Route::get('/email', function(){
-    $staff = \App\Staff::find(14);
+    $staff = \App\Models\Staff::find(14);
 
     //send email to employee
     $employee_official_email = $staff->official_email;
@@ -436,7 +438,11 @@ Route::get('/nav', function () {
     //event( new \App\Events\SendTimeSheetToBC130());
 
     $recipient_type = 'staff';
-    $recipient = \App\Staff::find('14');
+    $recipient = \App\Models\Staff::find('14');
     Mail::to('susumashoma@gmail.com')->send(new PasswordReset($recipient_type,$recipient));
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

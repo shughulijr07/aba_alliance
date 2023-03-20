@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,36 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+        public function redirectTo(){
+        $role_id = Auth::user()->role_id;
+        $user_status = Auth::user()->status;
+        $staff = Auth::user()->staff;
+
+
+        if( isset($staff->id) && $staff->staff_status == 'Active' && $user_status == 'active' ){
+
+            switch ($role_id){ // check tha value or role_id in system_roles table
+                case 1: return '/super-administrator'; break;
+                case 2: return '/managing-director'; break;
+                case 3: return '/human-resource-manager'; break;
+                case 4: return '/accountant'; break;
+                case 5: return '/supervisor'; break;
+                case 6: return '/employee'; break;
+                case 7: return '/system-administrator'; break;
+                case 8: return '/system-administrator'; break;
+                case 9: return '/finance-director'; break;
+                default: return '/login'; break;
+            }
+
+
+        }else if($role_id ==  1){
+            return '/super-administrator';
+        }
+        else{
+            return '/login';
+        }
+
+    }
 
     /**
      * The controller namespace for the application.
