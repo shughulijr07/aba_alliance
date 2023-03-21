@@ -8,19 +8,19 @@ use App\Events\LeavePlanApprovedBySupervisorEvent;
 use App\Events\LeavePlanRejectedEvent;
 use App\Events\LeavePlanReturnedEvent;
 use App\Events\LeavePlanSubmittedEvent;
-use App\GeneralSetting;
-use App\Holiday;
-use App\Leave;
-use App\LeaveEntitlement;
-use App\LeavePlan;
-use App\LeavePlanApproval;
-use App\LeavePlanChangedSupervisor;
-use App\LeavePlanLine;
-use App\LeavePlanReject;
-use App\LeavePlanReturn;
-use App\LeaveType;
-use App\MyFunctions;
-use App\Staff;
+use App\Models\GeneralSetting;
+use App\Models\Holiday;
+use App\Models\Leave;
+use App\Models\LeaveEntitlement;
+use App\Models\LeavePlan;
+use App\Models\LeavePlanApproval;
+use App\Models\LeavePlanChangedSupervisor;
+use App\Models\LeavePlanLine;
+use App\Models\LeavePlanReject;
+use App\Models\LeavePlanReturn;
+use App\Models\LeaveType;
+use App\Models\MyFunctions;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Gate;
 
@@ -168,7 +168,6 @@ class LeavePlansController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
         if (Gate::denies('access',['leave_plans','store'])){
             abort(403, 'Access Denied');
         }
@@ -176,7 +175,6 @@ class LeavePlansController extends Controller
         $data = $this->validateLeaveRequest();
         $staff_id = auth()->user()->staff->id;
 
-        //dd($request);
         //check if leave plan have been saved before
         $leave_plan = LeavePlan::where('staff_id','=',$staff_id)->where('year','=',date('Y'))->first();
         if( !isset($leave_plan->id)){ // if leave plan does not exist then create it

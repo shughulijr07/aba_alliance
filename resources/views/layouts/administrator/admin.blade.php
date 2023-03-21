@@ -74,7 +74,9 @@
                 <ul class="header-megamenu nav">
                     <li class="dropdown nav-item">
                         <a aria-haspopup="true" data-toggle="dropdown" class="nav-link" aria-expanded="false">
-                            <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['waitingForSPVApproval2'] + $leaveRequests['waitingForHRMApproval2'] + $leaveRequests['approvedWaitingPayment2']}}</span>
+                            <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                {{-- {{ $leaveRequests['waitingForSPVApproval2'] + $leaveRequests['waitingForHRMApproval2'] + $leaveRequests['approvedWaitingPayment2']}} --}}
+                            </span>
                             Leave Requests
                             <i class="fa fa-angle-down ml-2 opacity-5"></i>
                         </a>
@@ -91,26 +93,38 @@
                                 </div>
                             </div>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['waitingForSPVApproval2'] }}</span>  Waiting SPV Approval
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $leaveRequests['waitingForSPVApproval2'] }} --}}
+                                </span>  Waiting SPV Approval
                             </button>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['waitingForHRMApproval2'] }}</span>  Waiting HRM Approval
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $leaveRequests['waitingForHRMApproval2'] }} --}}
+                                </span>  Waiting HRM Approval
                             </button>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['approvedWaitingPayment2'] }}</span>  Waiting For Payment
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $leaveRequests['approvedWaitingPayment2'] }} --}}
+                                </span>  Waiting For Payment
                             </button>
                             <div tabindex="-1" class="dropdown-divider"></div>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['approved2'] }}</span>  Approved
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $leaveRequests['approved2'] }} --}}
+                                </span>  Approved
                             </button>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $leaveRequests['rejected2'] }}</span>  Rejected
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $leaveRequests['rejected2'] }} --}}
+                                </span>  Rejected
                             </button>
                         </div>
                     </li>
                     <li class="dropdown nav-item">
                         <a aria-haspopup="true" data-toggle="dropdown" class="nav-link" aria-expanded="false">
-                            <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $timeSheets['waitingForSPVApproval2'] + $timeSheets['waitingForHRMApproval2'] }}</span>
+                            <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                {{-- {{ $timeSheets['waitingForSPVApproval2'] + $timeSheets['waitingForHRMApproval2'] }} --}}
+                            </span>
                             Time Sheets
                             <i class="fa fa-angle-down ml-2 opacity-5"></i>
                         </a>
@@ -127,7 +141,9 @@
                                 </div>
                             </div>
                             <button type="button" tabindex="0" class="dropdown-item">
-                                <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $timeSheets['returnedForCorrection'] }}</span>  Returned For Correction
+                                <span class="badge badge-pill badge-danger ml-0 mr-2">
+                                    {{-- {{ $timeSheets['returnedForCorrection'] }} --}}
+                                </span>  Returned For Correction
                             </button>
                             <button type="button" tabindex="0" class="dropdown-item">
                                 <span class="badge badge-pill badge-danger ml-0 mr-2">{{ $timeSheets['waitingForSPVApproval2'] }}</span>  Waiting SPV Approval

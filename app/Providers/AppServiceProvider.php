@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\AdvancePaymentRequest;
 use App\Http\Controllers\LeavesController;
-use App\Leave;
-use App\LeavePlan;
-use App\PerformanceObjective;
-use App\TimeSheet;
-use App\TravelRequest;
+use App\Models\AdvancePaymentRequest as ModelsAdvancePaymentRequest;
+use App\Models\Leave;
+use App\Models\LeavePlan;
+use App\Models\PerformanceObjective;
+use App\Models\TimeSheet;
+use App\Models\TravelRequest;
+use Illuminate\Support\Facades\Schema as FacadesSchema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View;
 use Schema;
@@ -35,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        Schema::defaultStringLength(191);
+        FacadesSchema::defaultStringLength(191);
 
         view()->composer(['layouts.administrator.admin','layouts.administrator.admin-menu'], function ($view){
             $view->with('leaveRequests', Leave::countLeaveRequests());
@@ -58,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer(['layouts.administrator.admin','layouts.administrator.admin-menu'], function ($view){
-            $view->with('advancePaymentRequest', AdvancePaymentRequest::countRequests());
+            $view->with('advancePaymentRequest', ModelsAdvancePaymentRequest::countRequests());
         });
 
     }

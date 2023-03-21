@@ -4,34 +4,35 @@ namespace App\Http\Controllers;
 
 use App\Models\Leave;
 use App\Models\LeavePlan;
-use App\PerformanceObjective;
-use App\TimeSheet;
-use App\TravelRequest;
-use App\AdvancePaymentRequest;
-use App\RequisitionRequest;
-use App\RetirementRequest;
+use App\Models\PerformanceObjective;
+use App\Models\TimeSheet;
+use App\Models\TravelRequest;
+use App\Models\AdvancePaymentRequest;
+use App\Models\RequisitionRequest;
+use App\Models\RetirementRequest;
 use Illuminate\Http\Request;
 
 class DashboardsController extends Controller
 {
 
     public function showSuperAdminDashboard(){
-        $leavePlans = LeavePlan::countLeavePlans();
-        $leaveRequests = Leave::countLeaveRequests();
-        $timeSheets = TimeSheet::countTimeSheets();
-        $travelRequests = TravelRequest::countTravelRequests();
-        $performanceObjectives = PerformanceObjective::countPerformanceObjectives();
-        $paymentRequests= AdvancePaymentRequest::countRequests();
-        $requisitionRequests = RequisitionRequest::countTravelRequests();
-        $retirementRequests = RetirementRequest::countTravelRequests();
+        // $leavePlans = LeavePlan::countLeavePlans();
+        // $leaveRequests = Leave::countLeaveRequests();
+        // $timeSheets = TimeSheet::countTimeSheets();
+        // $travelRequests = TravelRequest::countTravelRequests();
+        // $performanceObjectives = PerformanceObjective::countPerformanceObjectives();
+        // $paymentRequests= AdvancePaymentRequest::countRequests();
+        // $requisitionRequests = RequisitionRequest::countTravelRequests();
+        // $retirementRequests = RetirementRequest::countTravelRequests();
 
-        $model_name = "";
-        $view_type = "";
-        $controller_name = "";
+        // $model_name = "";
+        // $view_type = "";
+        // $controller_name = "";
 
-        return view('admin.super_admin_dashboard',
-            compact('leavePlans','leaveRequests','timeSheets','travelRequests','performanceObjectives',
-                'retirementRequests','requisitionRequests','paymentRequests','controller_name','model_name','view_type'));
+        return view('admin.super_admin_dashboard'
+            // compact('leavePlans','leaveRequests','timeSheets','travelRequests','performanceObjectives',
+            //     'retirementRequests','requisitionRequests','paymentRequests','controller_name','model_name','view_type')
+            );
     }
 
     public function showSystemAdministratorDashboard(){
