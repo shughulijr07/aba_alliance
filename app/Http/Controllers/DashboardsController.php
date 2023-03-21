@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Leave;
-use App\LeavePlan;
+use App\Models\Leave;
+use App\Models\LeavePlan;
 use App\PerformanceObjective;
 use App\TimeSheet;
 use App\TravelRequest;
@@ -16,7 +16,6 @@ class DashboardsController extends Controller
 {
 
     public function showSuperAdminDashboard(){
-
         $leavePlans = LeavePlan::countLeavePlans();
         $leaveRequests = Leave::countLeaveRequests();
         $timeSheets = TimeSheet::countTimeSheets();
