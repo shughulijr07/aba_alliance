@@ -13,17 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('performance_objectives', function (Blueprint $table) {
+        Schema::create('system_role_permissions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('staff_id');
-            $table->string('leave_type');
-            $table->string('year');
-            $table->string('status');
-            $table->string('responsible_spv');
-            $table->string('transferred_to_nav');
+            $table->unsignedBigInteger('system_role_id');
+            $table->unsignedBigInteger('permission_id');
+            $table->boolean('view');
+            $table->boolean('add');
+            $table->boolean('edit');
+            $table->boolean('delete');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('performance_objectives');
+        Schema::dropIfExists('system_role_permissions');
     }
 };
