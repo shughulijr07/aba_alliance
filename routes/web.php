@@ -101,26 +101,25 @@ Route::get('employee',[DashboardsController::class, 'showEmployeeDashboard'])->m
 
 
 /************ LEAVE MANAGEMENT ROUTES *************************/
-Route::controller(LeavesController::class)
-->group(function(){
-    Route::get('/request_leave', 'create');
-    Route::post('/request_leave','store');
-    Route::get('/leaves/{status}','index');
-    Route::get('/admin_leaves/{status}','adminIndex');
-    Route::get('/leave/{id}','show');
-    Route::get('/leave_admin/{id}','showAdmin');
-    Route::get('/time_sheet_admin/leave_admin/{id}','showAdmin');
-    Route::post('/approve_leave','approveLeave');
-    Route::post('/confirm_leave_payment','confirmPayment');
-    Route::post('/modify_leave','modifyApproveLeave');
-    Route::post('/modify_leave','modifyApproveLeave');
-    Route::post('/change_supervisor','changeSupervisor');
-    Route::post('/reject_leave','rejectLeave');
-    Route::get('/leave_statement/{id}','showLeaveStatement');
-    Route::get('/my_leaves','myLeavesIndex');
-    Route::post('/my_leaves','myLeavesList');
-    Route::get('/overlapping_leaves/{id}','overlappingLeaves');
-});
+
+    Route::get('/request_leave',[LeavesController::class, 'create']);
+    Route::post('/request_leave',[LeavesController::class,'store']);
+    Route::get('/leaves/{status}',[LeavesController::class,'index']);
+    Route::get('/admin_leaves/{status}',[LeavesController::class,'adminIndex']);
+    Route::get('/leave/{id}',[LeavesController::class,'show']);
+    Route::get('/leave_admin/{id}',[LeavesController::class,'showAdmin']);
+    Route::get('/time_sheet_admin/leave_admin/{id}',[LeavesController::class,'showAdmin']);
+    Route::post('/approve_leave',[LeavesController::class,'approveLeave']);
+    Route::post('/confirm_leave_payment',[LeavesController::class,'confirmPayment']);
+    Route::post('/modify_leave',[LeavesController::class,'modifyApproveLeave']);
+    Route::post('/modify_leave',[LeavesController::class,'modifyApproveLeave']);
+    Route::post('/change_supervisor',[LeavesController::class,'changeSupervisor']);
+    Route::post('/reject_leave',[LeavesController::class,'rejectLeave']);
+    Route::get('/leave_statement/{id}',[LeavesController::class,'showLeaveStatement']);
+    Route::get('/my_leaves',[LeavesController::class,'myLeavesIndex']);
+    Route::post('/my_leaves',[LeavesController::class,'myLeavesList']);
+    Route::get('/overlapping_leaves/{id}',[LeavesController::class,'overlappingLeaves']);
+
 
 
 Route::controller(LeaveEntitlementsController::class)
