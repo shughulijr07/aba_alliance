@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Permission;
-use App\SystemRole;
-use App\SystemRolePermission;
+use App\Models\Permission;
+use App\Models\SystemRole;
+use App\Models\SystemRolePermission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Gate;
@@ -66,8 +66,6 @@ class SystemRolePermissionsController extends Controller
         }
 
         $permissions = Permission::all();
-
-
             foreach ($permissions as $permission){
                 $system_role_id = $system_role->id;
                 $permission_id = $permission->id;
