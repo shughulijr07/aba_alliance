@@ -325,19 +325,19 @@
 
 
 <!--Modals -->
-@if($view_type == 'index')
+@if($view_type ?? '' == 'index')
     @include('layouts.administrator.modal')
 @endif
 
-@if($model_name == 'project' && $view_type == 'index')
+@if($model_name ?? '' == 'project' && $view_type ?? '' == 'index')
     @include('projects.projects.filter-modal')
 @endif
 
-@if($model_name == 'activity' && $view_type == 'index')
+@if($model_name ?? '' == 'activity' && $view_type ?? '' == 'index')
     @include('projects.activities.filter-modal')
 @endif
 
-@if($model_name == 'gl_account' && $view_type == 'index')
+@if($model_name ?? '' == 'gl_account' && $view_type ?? '' == 'index')
     @include('gl_accounts.filter-modal')
 @endif
 
