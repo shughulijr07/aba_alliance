@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Events\ResetPasswordEvent;
-use App\Staff;
-use App\User;
+use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Gate;
 use Illuminate\Support\Facades\Hash;

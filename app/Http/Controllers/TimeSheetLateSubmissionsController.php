@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Staff;
-use App\TimeSheet;
-use App\TimeSheetLateSubmission;
+use App\Models\Staff;
+use App\Models\TimeSheet;
+use App\Models\TimeSheetLateSubmission;
 use Facade\FlareClient\Time\Time;
 use Illuminate\Http\Request;
 

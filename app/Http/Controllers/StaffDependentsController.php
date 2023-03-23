@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\MyFunctions;
-use App\StaffDependent;
-use App\UserActivity;
+use App\Models\MyFunctions;
+use App\Models\StaffDependent;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Gate;
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Staff;
-use App\Supervisor;
+use App\Models\Staff;
+use App\Models\Supervisor;
 use Illuminate\Http\Request;
 use Gate;
 

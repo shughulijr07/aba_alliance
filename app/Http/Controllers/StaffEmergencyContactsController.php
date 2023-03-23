@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\StaffEmergencyContact;
-use App\UserActivity;
+use App\Models\StaffEmergencyContact;
+use App\Models\UserActivity;
 use Gate;
 use Illuminate\Http\Request;
 

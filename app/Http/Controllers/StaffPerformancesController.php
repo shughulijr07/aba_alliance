@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\GeneralSetting;
-use App\PerformanceObjective;
-use App\Staff;
-use App\StaffPerformance;
+use App\Models\GeneralSetting;
+use App\Models\PerformanceObjective;
+use App\Models\Staff;
+use App\Models\StaffPerformance;
 use Illuminate\Http\Request;
 use Gate;
 

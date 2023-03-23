@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\SystemRole;
-use App\SystemRolePermission;
+use App\Models\SystemRole;
+use App\Models\SystemRolePermission;
 use Gate;
 use Illuminate\Http\Request;
 

@@ -66,6 +66,7 @@ class AuthServiceProvider extends ServiceProvider
             $system_role_id = $user->role_id;
 
             $permissions = $this->getPermissions($system_role_id, $permission_name);
+            dd($permissions);
 
             $granted = '';
             switch($action){

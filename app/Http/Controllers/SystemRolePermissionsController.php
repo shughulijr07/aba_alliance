@@ -7,7 +7,7 @@ use App\Models\SystemRole;
 use App\Models\SystemRolePermission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class SystemRolePermissionsController extends Controller
 {

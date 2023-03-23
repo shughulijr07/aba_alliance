@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\GeneralSetting;
-use App\Holiday;
-use App\Leave;
-use App\Project;
-use App\TimeSheet;
-use App\TimeSheetApproval;
-use App\TimeSheetLateSubmission;
-use App\TimeSheetType;
-use App\MyFunctions;
-use App\Staff;
+use App\Models\GeneralSetting;
+use App\Models\Holiday;
+use App\Models\Leave;
+use App\Models\Project;
+use App\Models\TimeSheet;
+use App\Models\TimeSheetApproval;
+use App\Models\TimeSheetLateSubmission;
+use App\Models\TimeSheetType;
+use App\Models\MyFunctions;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Gate;
 use Illuminate\Support\Facades\DB;

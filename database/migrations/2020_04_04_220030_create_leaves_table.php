@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('leaves', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('leave_type');
-            $table->string('employee_id');
+            $table->unsignedBigInteger('employee_id');
             $table->string('include_payment')->nullable();
             $table->string('starting_date');
             $table->string('ending_date');

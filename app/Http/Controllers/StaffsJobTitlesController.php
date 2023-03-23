@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\StaffJobTitle;
+use App\Models\StaffJobTitle;
 use Illuminate\Http\Request;
 use Gate;
 
