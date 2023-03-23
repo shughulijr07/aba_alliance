@@ -62,7 +62,8 @@ use Illuminate\Support\Facades\Mail;
 
 Auth::routes();
 
-Route::get('/home', function(){ return redirect('employee');});
+Route::get('/home', function(){ 
+    return redirect('employee');});
 Route::view('/','auth.login');
 
 Route::get('/send_time_sheet',function(){
@@ -120,93 +121,64 @@ Route::get('employee',[DashboardsController::class, 'showEmployeeDashboard'])->m
     Route::post('/my_leaves',[LeavesController::class,'myLeavesList']);
     Route::get('/overlapping_leaves/{id}',[LeavesController::class,'overlappingLeaves']);
 
-
-
-Route::controller(LeaveEntitlementsController::class)
-->group(function(){
-Route::get('/leave_entitlements/create','create');
-Route::post('/leave_entitlements','store');
-Route::get('/leave_entitlements','index');
-Route::get('/leave_entitlements/{id}','show');
-Route::get('/leave_entitlements/{id}/edit','edit');
-Route::patch('/leave_entitlements/{id}','update');
-Route::get('/perform_carry_over/{staff_id}','performCarryOver');
-});
+//LeavesEntitlement Routes
+Route::get('/leave_entitlements/create',[LeaveEntitlementsController::class,'create']);
+Route::post('/leave_entitlements',[LeaveEntitlementsController::class,'store']);
+Route::get('/leave_entitlements',[LeaveEntitlementsController::class,'index']);
+Route::get('/leave_entitlements/{id}',[LeaveEntitlementsController::class,'show']);
+Route::get('/leave_entitlements/{id}/edit',[LeaveEntitlementsController::class,'edit']);
+Route::patch('/leave_entitlements/{id}',[LeaveEntitlementsController::class,'update']);
+Route::get('/perform_carry_over/{staff_id}',[LeaveEntitlementsController::class,'performCarryOver']);
 
 Route::get('/leave_reports',[LeaveReportsController::class, 'index']);
 Route::post('/generate_leave_report',[LeaveReportsController::class, 'generateReport']);
-
-
 Route::resource('leave_types', LeaveTypesController::class);
 
+//LeavesPlan Routes
+Route::get('/leave_plan_remove_line/{line_id}',[LeavePlansController::class,'removeLine']);
+Route::get('/leave_plan_submit/{leave_plan_id}',[LeavePlansController::class,'submitLeavePlan']);
+Route::get('/leave_plan_admin/{id}',[LeavePlansController::class,'showAdmin']);
+Route::get('/leave/leave_plans/{id}',[LeavePlansController::class,'showById']);
+Route::get('/leave_admin/leave_plans/{id}',[LeavePlansController::class,'showAdmin']);
+Route::get('/admin_leave_plans/{status}',[LeavePlansController::class,'adminIndex']);
+Route::get('/leave_plan_summary/{mode}',[LeavePlansController::class,'leavePlansSummary']);
 
-Route::controller(LeavePlansController::class)
-->group(function(){
-
-Route::get('/leave_plan_remove_line/{line_id}','removeLine');
-Route::get('/leave_plan_submit/{leave_plan_id}','submitLeavePlan');
-Route::get('/leave_plan_admin/{id}','showAdmin');
-Route::get('/leave/leave_plans/{id}','showById');
-Route::get('/leave_admin/leave_plans/{id}','showAdmin');
-Route::get('/admin_leave_plans/{status}','adminIndex');
-Route::get('/leave_plan_summary/{mode}','leavePlansSummary');
-
-Route::post('/approve_leave_plan','approveLeavePlan');
-Route::post('/return_leave_plan','returnLeavePlan');
-Route::post('/change_leave_plan_spv','changeSupervisor');
-Route::post('/reject_leave_plan','rejectLeavePlan');
-});
+Route::post('/approve_leave_plan',[LeavePlansController::class,'approveLeavePlan']);
+Route::post('/return_leave_plan',[LeavePlansController::class,'returnLeavePlan']);
+Route::post('/change_leave_plan_spv',[LeavePlansController::class,'changeSupervisor']);
+Route::post('/reject_leave_plan',[LeavePlansController::class,'rejectLeavePlan']);
 Route::resource('leave_plans', LeavePlansController::class );
 
 
 /************ TIME SHEETS MANAGEMENT ROUTES *************************/
-Route::controller(TimeSheetsController::class)
-->group(function(){
-Route::get('/new_time_sheet','create');
-Route::post('/new_time_sheet','store');
-Route::get('/create_timesheet_for_another_staff','createForAnotherStaff');
-Route::post('/create_timesheet_for_another_staff','storeForAnotherStaff');
-
-Route::get('/create_time_sheet_entries/{id}','createTimeSheetLines');
-Route::post('/create_time_sheet_entries','storeTimesheetData');
-Route::get('/create_time_sheet_entries_admin/{id}','createTimeSheetLinesAdmin');
-Route::post('/create_time_sheet_entries_admin','storeTimesheetDataAdmin');
-
-Route::get('/time_sheets/{status}','index');
-Route::get('/admin_time_sheets/{status}','adminIndex');
-
-Route::get('/time_sheet/{id}','show');
-Route::get('/time_sheet_admin/{id}','showAdmin');
-Route::get('/time_sheet_edit/{id}','editTimeSheetData');
-Route::get('/time_sheet_edit_admin/{id}','adminEditTimeSheetData');
-Route::post('/time_sheet_edit','update');
-Route::get('/my_time_sheets','myTimeSheetsIndex');
-Route::post('/my_time_sheets','myTimeSheetsList');
-
-Route::post('/approve_timesheet','approveTimeSheet');
-Route::post('/return_timesheet','returnTimeSheet');
-Route::post('/change_timesheet_spv','changeSupervisor');
-Route::post('/reject_timesheet','rejectTimeSheet');
-Route::get('/time_sheet_statement/{id}','showTimeSheetStatement');
-});
-
-
-
+Route::get('/new_time_sheet',[TimeSheetsController::class,'create']);
+Route::post('/new_time_sheet',[TimeSheetsController::class,'store']);
+Route::get('/create_timesheet_for_another_staff',[TimeSheetsController::class,'createForAnotherStaff']);
+Route::post('/create_timesheet_for_another_staff',[TimeSheetsController::class,'storeForAnotherStaff']);
+Route::get('/create_time_sheet_entries/{id}',[TimeSheetsController::class,'createTimeSheetLines']);
+Route::post('/create_time_sheet_entries',[TimeSheetsController::class,'storeTimesheetData']);
+Route::get('/create_time_sheet_entries_admin/{id}',[TimeSheetsController::class,'createTimeSheetLinesAdmin']);
+Route::post('/create_time_sheet_entries_admin',[TimeSheetsController::class,'storeTimesheetDataAdmin']);
+Route::get('/time_sheets/{status}',[TimeSheetsController::class,'index']);
+Route::get('/admin_time_sheets/{status}',[TimeSheetsController::class,'adminIndex']);
+Route::get('/time_sheet/{id}',[TimeSheetsController::class,'show']);
+Route::get('/time_sheet_admin/{id}',[TimeSheetsController::class,'showAdmin']);
+Route::get('/time_sheet_edit/{id}',[TimeSheetsController::class,'editTimeSheetData']);
+Route::get('/time_sheet_edit_admin/{id}',[TimeSheetsController::class,'adminEditTimeSheetData']);
+Route::post('/time_sheet_edit',[TimeSheetsController::class,'update']);
+Route::get('/my_time_sheets',[TimeSheetsController::class,'myTimeSheetsIndex']);
+Route::post('/my_time_sheets',[TimeSheetsController::class,'myTimeSheetsList']);
+Route::post('/approve_timesheet',[TimeSheetsController::class,'approveTimeSheet']);
+Route::post('/return_timesheet',[TimeSheetsController::class,'returnTimeSheet']);
+Route::post('/change_timesheet_spv',[TimeSheetsController::class,'changeSupervisor']);
+Route::post('/reject_timesheet',[TimeSheetsController::class,'rejectTimeSheet']);
+Route::get('/time_sheet_statement/{id}',[TimeSheetsController::class,'showTimeSheetStatement']);
 Route::resource('time_sheet_late_submissions',TimeSheetLateSubmissionsController::class);
 Route::get('/unlock_time_sheet_submission/{id} ',[TimeSheetLateSubmissionsController::class, 'unlockTimeSheetSubmission']);
-
-
-Route::controller(TimeSheetReportsController::class)
-->group(function(){
-    Route::get('/time_sheet_reports','index');
-    Route::post('/generate_time_sheet_report','generateReport');
-});
-
-
-
+Route::get('/time_sheet_reports',[TimeSheetReportsController::class,'index']);
+Route::post('/generate_time_sheet_report',[TimeSheetReportsController::class,'generateReport']);
 Route::get('/holidays_list/{year}',[HolidaysController::class, 'index2']);
 Route::get('/supervisors/delete/{supervisor_id}',[SupervisorsController::class, 'delete']);
-
 Route::resource('supervisors',SupervisorsController::class);
 
 
@@ -223,196 +195,153 @@ Route::post('/gl_accounts/ajaxDelete/', [GlAccountsController::class, 'ajaxDelet
 Route::get('/activities/import_from_excel', [ActivitiesController::class, 'importFromExcel']);
 Route::get('/gl_accounts/import_from_excel', [GlAccountsController::class, 'importFromExcel']);
 
-
 Route::resource('projects',ProjectsController::class);
 Route::resource('activities',ActivitiesController::class);
 Route::resource('active_projects',ActiveProjectsController::class);
 Route::resource('gl_accounts',GlAccountsController::class);
 
 
-
-
 /************ TRAVEL MANAGEMENT ROUTES *************************/
-
-Route::controller(TravelRequestsController::class)
-->group(function(){
-Route::get('/new_travel_request','create');
-Route::post('/travel_request','store');
-Route::get('/travel_request/{id}','show');
-Route::patch('/travel_request_update/{id}','update');
-Route::get('/travel_requests/{status}','index');
-Route::get('/admin_travel_requests/{status}','adminIndex');
-Route::get('/travel_requests_admin/{id}','showAdmin');
-Route::get('/travelFilePreview/{is}','filePreview');
-Route::get('/travel_request/activities','activities');
-
-Route::post('/approve_travel_request','approveTravelRequest');
-Route::post('/return_travel_request','returnTravelRequest');
-Route::post('/change_travel_request_spv','changeSupervisor');
-Route::post('/reject_travel_request','rejectTravelRequest');
-
-
-Route::get('/my_travel_records','myTravelRequestsIndex');
-Route::post('/my_travel_records','myTravelRequestsList');
-Route::get('/staff_travel_records','staffTravelRequestsIndex');
-Route::post('/staff_travel_records','staffTravelRequestsList');
-Route::get('/travel_request_statement/{id}','showTravellingStatement');
-});
+Route::get('/new_travel_request',[TravelRequestsController::class,'create']);
+Route::post('/travel_request',[TravelRequestsController::class,'store']);
+Route::get('/travel_request/{id}',[TravelRequestsController::class,'show']);
+Route::patch('/travel_request_update/{id}',[TravelRequestsController::class,'update']);
+Route::get('/travel_requests/{status}',[TravelRequestsController::class,'index']);
+Route::get('/admin_travel_requests/{status}',[TravelRequestsController::class,'adminIndex']);
+Route::get('/travel_requests_admin/{id}',[TravelRequestsController::class,'showAdmin']);
+Route::get('/travelFilePreview/{is}',[TravelRequestsController::class,'filePreview']);
+Route::get('/travel_request/activities',[TravelRequestsController::class,'activities']);
+Route::post('/approve_travel_request',[TravelRequestsController::class,'approveTravelRequest']);
+Route::post('/return_travel_request',[TravelRequestsController::class,'returnTravelRequest']);
+Route::post('/change_travel_request_spv',[TravelRequestsController::class,'changeSupervisor']);
+Route::post('/reject_travel_request',[TravelRequestsController::class,'rejectTravelRequest']);
+Route::get('/my_travel_records',[TravelRequestsController::class,'myTravelRequestsIndex']);
+Route::post('/my_travel_records',[TravelRequestsController::class,'myTravelRequestsList']);
+Route::get('/staff_travel_records',[TravelRequestsController::class,'staffTravelRequestsIndex']);
+Route::post('/staff_travel_records',[TravelRequestsController::class,'staffTravelRequestsList']);
+Route::get('/travel_request_statement/{id}',[TravelRequestsController::class,'showTravellingStatement']);
 
 /************ REQUISITION MANAGEMENT ROUTES *************************/
-Route::controller(RequisitionRequestsController::class)
-->group(function(){
-Route::get('/new_requisition_request','create');
-Route::post('/requisition_request','store');
-Route::get('/requisition_request/{id}','show');
-Route::patch('/requisition_request_update/{id}','update');
-Route::get('/requisition_requests/{status}','index');
-Route::get('/admin_requisition_requests/{status}','adminIndex');
-Route::get('/requisition_requests_admin/{id}','showAdmin');
-Route::get('/requisitionFilePreview/{is}','filePreview');
-Route::get('/requisition_activities','activities');
-
-Route::post('/approve_requisition_request','approveTravelRequest');
-Route::post('/return_requisition_request','returnTravelRequest');
-Route::post('/change_requisition_request_spv','changeSupervisor');
-Route::post('/reject_requisition_request','rejectTravelRequest');
-
-
-Route::get('/my_requisition_records','myTravelRequestsIndex');
-Route::post('/my_requisition_records','myTravelRequestsList');
-Route::get('/staff_requisition_records','staffTravelRequestsIndex');
-Route::post('/staff_requisition_records','staffTravelRequestsList');
-Route::get('/requisition_request_statement/{id}','showTravellingStatement');
-});
+Route::get('/new_requisition_request',[RequisitionRequestsController::class,'create']);
+Route::post('/requisition_request',[RequisitionRequestsController::class,'store']);
+Route::get('/requisition_request/{id}',[RequisitionRequestsController::class,'show']);
+Route::patch('/requisition_request_update/{id}',[RequisitionRequestsController::class,'update']);
+Route::get('/requisition_requests/{status}',[RequisitionRequestsController::class,'index']);
+Route::get('/admin_requisition_requests/{status}',[RequisitionRequestsController::class,'adminIndex']);
+Route::get('/requisition_requests_admin/{id}',[RequisitionRequestsController::class,'showAdmin']);
+Route::get('/requisitionFilePreview/{is}',[RequisitionRequestsController::class,'filePreview']);
+Route::get('/requisition_activities',[RequisitionRequestsController::class,'activities']);
+Route::post('/approve_requisition_request',[RequisitionRequestsController::class,'approveTravelRequest']);
+Route::post('/return_requisition_request',[RequisitionRequestsController::class,'returnTravelRequest']);
+Route::post('/change_requisition_request_spv',[RequisitionRequestsController::class,'changeSupervisor']);
+Route::post('/reject_requisition_request',[RequisitionRequestsController::class,'rejectTravelRequest']);
+Route::get('/my_requisition_records',[RequisitionRequestsController::class,'myTravelRequestsIndex']);
+Route::post('/my_requisition_records',[RequisitionRequestsController::class,'myTravelRequestsList']);
+Route::get('/staff_requisition_records',[RequisitionRequestsController::class,'staffTravelRequestsIndex']);
+Route::post('/staff_requisition_records',[RequisitionRequestsController::class,'staffTravelRequestsList']);
+Route::get('/requisition_request_statement/{id}',[RequisitionRequestsController::class,'showTravellingStatement']);
 
 /************ ADVANCE PAYMENT MANAGEMENT ROUTES *************************/
-Route::controller(AdvancePaymentRequestsController::class)
-->group(function(){
-Route::get('/new_advance_payment_request','create');
-Route::post('/advance_payment_request','store');
-Route::get('/advance_payment_request/{id}','show');
-Route::get('/advance_payment_request/{id}/{responseType}','show');
-Route::get('/advance_payment_request_edit/{id}','edit');
-Route::get('/advance_payment_request_edit/{id}/{responseType}','edit');
-Route::patch('/advance_payment_request_update/{id}','update');
-Route::get('/advance_payment_requests/{status}','index');
-Route::get('/admin_advance_payment_requests/{status}','adminIndex');
-Route::get('/advance_payment_requests_admin/{id}','showAdmin');
-Route::get('/advance_payment_requests_admin/{id}/{responseType}','showAdmin');
-
-Route::post('/approve_advance_payment_request','approveRequest');
-Route::post('/return_advance_payment_request','returnRequest');
-Route::post('/change_advance_payment_request_spv','changeSupervisor');
-Route::post('/reject_advance_payment_request','rejectRequest');
-
-
-Route::get('/my_advance_payment_records','myRequestsIndex');
-Route::post('/my_advance_payment_records','myRequestsList');
-Route::get('/staff_advance_payment_records','staffRequestsIndex');
-Route::post('/staff_advance_payment_records','staffRequestsList');
-Route::get('/advance_payment_request_statement/{id}','showStatement');
-
-Route::post('/advance_payment_requests.ajaxDeleteMultiple','deleteMultiple')->name('advance_payment_requests.ajaxDeleteMultiple');
-Route::post('/advance_payment_requests.ajaxApproveMultiple','approveMultipleRequests')->name('advance_payment_requests.ajaxApproveMultiple');
-Route::post('/advance_payment_requests.ajaxApprove','approveRequest')->name('advance_payment_requests.ajaxApprove');
-Route::post('/advance_payment_requests.ajaxReturnForCorrection','returnRequest')->name('advance_payment_requests.ajaxReturnForCorrection');
-Route::post('/advance_payment_requests.ajaxChangeSupervisor','changeSupervisor')->name('advance_payment_requests.ajaxChangeSupervisor');
-Route::post('/advance_payment_requests.ajaxReject','rejectRequest')->name('advance_payment_requests.ajaxReject');
-});
-
+Route::get('/new_advance_payment_request',[AdvancePaymentRequestsController::class,'create']);
+Route::post('/advance_payment_request',[AdvancePaymentRequestsController::class,'store']);
+Route::get('/advance_payment_request/{id}',[AdvancePaymentRequestsController::class,'show']);
+Route::get('/advance_payment_request/{id}/{responseType}',[AdvancePaymentRequestsController::class,'show']);
+Route::get('/advance_payment_request_edit/{id}',[AdvancePaymentRequestsController::class,'edit']);
+Route::get('/advance_payment_request_edit/{id}/{responseType}',[AdvancePaymentRequestsController::class,'edit']);
+Route::patch('/advance_payment_request_update/{id}',[AdvancePaymentRequestsController::class,'update']);
+Route::get('/advance_payment_requests/{status}',[AdvancePaymentRequestsController::class,'index']);
+Route::get('/admin_advance_payment_requests/{status}',[AdvancePaymentRequestsController::class,'adminIndex']);
+Route::get('/advance_payment_requests_admin/{id}',[AdvancePaymentRequestsController::class,'showAdmin']);
+Route::get('/advance_payment_requests_admin/{id}/{responseType}',[AdvancePaymentRequestsController::class,'showAdmin']);
+Route::post('/approve_advance_payment_request',[AdvancePaymentRequestsController::class,'approveRequest']);
+Route::post('/return_advance_payment_request',[AdvancePaymentRequestsController::class,'returnRequest']);
+Route::post('/change_advance_payment_request_spv',[AdvancePaymentRequestsController::class,'changeSupervisor']);
+Route::post('/reject_advance_payment_request',[AdvancePaymentRequestsController::class,'rejectRequest']);
+Route::get('/my_advance_payment_records',[AdvancePaymentRequestsController::class,'myRequestsIndex']);
+Route::post('/my_advance_payment_records',[AdvancePaymentRequestsController::class,'myRequestsList']);
+Route::get('/staff_advance_payment_records',[AdvancePaymentRequestsController::class,'staffRequestsIndex']);
+Route::post('/staff_advance_payment_records',[AdvancePaymentRequestsController::class,'staffRequestsList']);
+Route::get('/advance_payment_request_statement/{id}',[AdvancePaymentRequestsController::class,'showStatement']);
+Route::post('/advance_payment_requests.ajaxDeleteMultiple',[AdvancePaymentRequestsController::class,'deleteMultiple'])->name('advance_payment_requests.ajaxDeleteMultiple');
+Route::post('/advance_payment_requests.ajaxApproveMultiple',[AdvancePaymentRequestsController::class,'approveMultipleRequests'])->name('advance_payment_requests.ajaxApproveMultiple');
+Route::post('/advance_payment_requests.ajaxApprove',[AdvancePaymentRequestsController::class,'approveRequest'])->name('advance_payment_requests.ajaxApprove');
+Route::post('/advance_payment_requests.ajaxReturnForCorrection',[AdvancePaymentRequestsController::class,'returnRequest'])->name('advance_payment_requests.ajaxReturnForCorrection');
+Route::post('/advance_payment_requests.ajaxChangeSupervisor',[AdvancePaymentRequestsController::class,'changeSupervisor'])->name('advance_payment_requests.ajaxChangeSupervisor');
+Route::post('/advance_payment_requests.ajaxReject',[AdvancePaymentRequestsController::class,'rejectRequest'])->name('advance_payment_requests.ajaxReject');
 
 /************ REQUISITION MANAGEMENT ROUTES *************************/
-Route::controller(RequisitionRequestsController::class)
-->group(function(){
-Route::get('/new_requisition_request','create');
-Route::post('/requisition_request','store');
-Route::get('/requisition_request/{id}','show');
-Route::patch('/requisition_request_update/{id}','update');
-Route::get('/requisition_requests/{status}','index');
-Route::get('/admin_requisition_requests/{status}','adminIndex');
-Route::get('/requisition_requests_admin/{id}','showAdmin');
-Route::get('/requisitionFilePreview/{is}','filePreview');
-Route::get('/requisition_activities','activities');
-
-Route::post('/approve_requisition_request','approveTravelRequest');
-Route::post('/return_requisition_request','returnTravelRequest');
-Route::post('/change_requisition_request_spv','changeSupervisor');
-Route::post('/reject_requisition_request','rejectTravelRequest');
-
-
-Route::get('/my_requisition_records','myTravelRequestsIndex');
-Route::post('/my_requisition_records','myTravelRequestsList');
-Route::get('/staff_requisition_records','staffTravelRequestsIndex');
-Route::post('/staff_requisition_records','staffTravelRequestsList');
-Route::get('/requisition_request_statement/{id}','showTravellingStatement');
-});
+Route::get('/new_requisition_request',[RequisitionRequestsController::class,'create']);
+Route::post('/requisition_request',[RequisitionRequestsController::class,'store']);
+Route::get('/requisition_request/{id}',[RequisitionRequestsController::class,'show']);
+Route::patch('/requisition_request_update/{id}',[RequisitionRequestsController::class,'update']);
+Route::get('/requisition_requests/{status}',[RequisitionRequestsController::class,'index']);
+Route::get('/admin_requisition_requests/{status}',[RequisitionRequestsController::class,'adminIndex']);
+Route::get('/requisition_requests_admin/{id}',[RequisitionRequestsController::class,'showAdmin']);
+Route::get('/requisitionFilePreview/{is}',[RequisitionRequestsController::class,'filePreview']);
+Route::get('/requisition_activities',[RequisitionRequestsController::class,'activities']);
+Route::post('/approve_requisition_request',[RequisitionRequestsController::class,'approveTravelRequest']);
+Route::post('/return_requisition_request',[RequisitionRequestsController::class,'returnTravelRequest']);
+Route::post('/change_requisition_request_spv',[RequisitionRequestsController::class,'changeSupervisor']);
+Route::post('/reject_requisition_request',[RequisitionRequestsController::class,'rejectTravelRequest']);
+Route::get('/my_requisition_records',[RequisitionRequestsController::class,'myTravelRequestsIndex']);
+Route::post('/my_requisition_records',[RequisitionRequestsController::class,'myTravelRequestsList']);
+Route::get('/staff_requisition_records',[RequisitionRequestsController::class,'staffTravelRequestsIndex']);
+Route::post('/staff_requisition_records',[RequisitionRequestsController::class,'staffTravelRequestsList']);
+Route::get('/requisition_request_statement/{id}',[RequisitionRequestsController::class,'showTravellingStatement']);
 
 /************ RETIREMENT MANAGEMENT ROUTES *************************/
-Route::controller(RetirementRequestsController::class)
-->group(function(){
-Route::get('/new_retirement_request/{id}','create');
-Route::post('/retirement_request','store');
-Route::get('/retirement_request/{id}','show');
-Route::patch('/retirement_request_update/{id}','update');
-Route::get('/retirement_requests/{status}','index');
-Route::get('/admin_retirement_requests/{status}','adminIndex');
-Route::get('/retirement_requests_admin/{id}','showAdmin');
-Route::get('/retirementFilePreview/{is}','filePreview');
-Route::get('/retirement_activities','activities');
-Route::get('/admin_retirementadvance_payment_requests/{status}','adminIndexPayment');
-
-
-Route::post('/approve_retirement_request','approveTravelRequest');
-Route::post('/return_retirement_request','returnTravelRequest');
-Route::post('/change_retirement_request_spv','changeSupervisor');
-Route::post('/reject_retirement_request','rejectTravelRequest');
-
-
-Route::get('/my_retirement_records','myTravelRequestsIndex');
-Route::post('/my_retirement_records','myTravelRequestsList');
-Route::get('/staff_retirement_records','staffTravelRequestsIndex');
-Route::post('/staff_retirement_records','staffTravelRequestsList');
-Route::get('/retirement_request_statement/{id}','showTravellingStatement');
-});
+Route::get('/new_retirement_request/{id}',[RetirementRequestsController::class,'create']);
+Route::post('/retirement_request',[RetirementRequestsController::class,'store']);
+Route::get('/retirement_request/{id}',[RetirementRequestsController::class,'show']);
+Route::patch('/retirement_request_update/{id}',[RetirementRequestsController::class,'update']);
+Route::get('/retirement_requests/{status}',[RetirementRequestsController::class,'index']);
+Route::get('/admin_retirement_requests/{status}',[RetirementRequestsController::class,'adminIndex']);
+Route::get('/retirement_requests_admin/{id}',[RetirementRequestsController::class,'showAdmin']);
+Route::get('/retirementFilePreview/{is}',[RetirementRequestsController::class,'filePreview']);
+Route::get('/retirement_activities',[RetirementRequestsController::class,'activities']);
+Route::get('/admin_retirementadvance_payment_requests/{status}',[RetirementRequestsController::class,'adminIndexPayment']);
+Route::post('/approve_retirement_request',[RetirementRequestsController::class,'approveTravelRequest']);
+Route::post('/return_retirement_request',[RetirementRequestsController::class,'returnTravelRequest']);
+Route::post('/change_retirement_request_spv',[RetirementRequestsController::class,'changeSupervisor']);
+Route::post('/reject_retirement_request',[RetirementRequestsController::class,'rejectTravelRequest']);
+Route::get('/my_retirement_records',[RetirementRequestsController::class,'myTravelRequestsIndex']);
+Route::post('/my_retirement_records',[RetirementRequestsController::class,'myTravelRequestsList']);
+Route::get('/staff_retirement_records',[RetirementRequestsController::class,'staffTravelRequestsIndex']);
+Route::post('/staff_retirement_records',[RetirementRequestsController::class,'staffTravelRequestsList']);
+Route::get('/retirement_request_statement/{id}',[RetirementRequestsController::class,'showTravellingStatement']);
 
 
 /************ PERFORMANCE MANAGEMENT ROUTES *************************/
-Route::controller(PerformanceObjectivesController::class)
-->group(function(){
-Route::get('/set_objectives','create');
-Route::post('/submit_objectives','store');
-Route::patch('/update_objectives/{id}','update');
-Route::get('/performance_objective/{id}','show');
-Route::get('/performance_objective_admin/{id}','showAdmin');
-Route::get('/performance_objectives/{status}','index');
-Route::get('/admin_performance_objectives/{status}','adminIndex');
+Route::get('/set_objectives',[PerformanceObjectivesController::class,'create']);
+Route::post('/submit_objectives',[PerformanceObjectivesController::class,'store']);
+Route::patch('/update_objectives/{id}',[PerformanceObjectivesController::class,'update']);
+Route::get('/performance_objective/{id}',[PerformanceObjectivesController::class,'show']);
+Route::get('/performance_objective_admin/{id}',[PerformanceObjectivesController::class,'showAdmin']);
+Route::get('/performance_objectives/{status}',[PerformanceObjectivesController::class,'index']);
+Route::get('/admin_performance_objectives/{status}',[PerformanceObjectivesController::class,'adminIndex']);
 
-Route::post('/approve_objectives','approvePerformanceObjectives');
-Route::post('/return_objectives','returnPerformanceObjectives');
-Route::post('/change_objectives_spv','changeSupervisor');
-Route::post('/reject_objectives','rejectPerformanceObjectives');
-});
+Route::post('/approve_objectives',[PerformanceObjectivesController::class,'approvePerformanceObjectives']);
+Route::post('/return_objectives',[PerformanceObjectivesController::class,'returnPerformanceObjectives']);
+Route::post('/change_objectives_spv',[PerformanceObjectivesController::class,'changeSupervisor']);
+Route::post('/reject_objectives',[PerformanceObjectivesController::class,'rejectPerformanceObjectives']);
 
 
-Route::controller(StaffPerformancesController::class)
-->group(function(){
-Route::get('/staff_performances','index');
-Route::get('/staff_performances_admin/{year}','indexAdmin');
-Route::get('/staff_performances/{performance_id}','show');
-Route::post('/first_quoter_staff_performance_assessment','firstQuoterAssessment');
-Route::post('/second_quoter_staff_performance_assessment','secondQuoterAssessment');
-Route::post('/third_quoter_staff_performance_assessment','thirdQuoterAssessment');
-Route::post('/fourth_quoter_staff_performance_assessment','fourthQuoterAssessment');
-});
+
+
+Route::get('/staff_performances',[StaffPerformancesController::class,'index']);
+Route::get('/staff_performances_admin/{year}',[StaffPerformancesController::class,'indexAdmin']);
+Route::get('/staff_performances/{performance_id}',[StaffPerformancesController::class,'show']);
+Route::post('/first_quoter_staff_performance_assessment',[StaffPerformancesController::class,'firstQuoterAssessment']);
+Route::post('/second_quoter_staff_performance_assessment',[StaffPerformancesController::class,'secondQuoterAssessment']);
+Route::post('/third_quoter_staff_performance_assessment',[StaffPerformancesController::class,'thirdQuoterAssessment']);
+Route::post('/fourth_quoter_staff_performance_assessment',[StaffPerformancesController::class,'fourthQuoterAssessment']);
+
 
 
 /***************************** MIXED ROUTES'*****************************/
-Route::controller(StaffController::class)
-->group(function(){
-Route::get('/staff_supervisors','supervisorsIndex');
-Route::post('/staff_supervisor_update','supervisorsUpdate');
-});
 
+Route::get('/staff_supervisors',[StaffController::class,'supervisorsIndex']);
+Route::post('/staff_supervisor_update',[StaffController::class,'supervisorsUpdate']);
 
 Route::get('/create_staff_biographical_data_sheets/{staff_id}',[StaffBiographicalDataSheetsController::class, 'createForStaff']);
 Route::get('/reset_staff_password/{id}',[UserAccountController::class, 'resetPassword']);
