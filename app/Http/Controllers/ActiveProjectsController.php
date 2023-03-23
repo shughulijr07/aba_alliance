@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ActiveProject;
-use App\Project;
-use App\TimeSheet;
+use App\Models\ActiveProject;
+use App\Models\Project;
+use App\Models\TimeSheet;
 use Illuminate\Http\Request;
 use Gate;
 

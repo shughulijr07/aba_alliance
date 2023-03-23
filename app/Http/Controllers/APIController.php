@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 
-use App\BC130;
+use App\Models\BC130;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 use Illuminate\Support\Facades\DB;

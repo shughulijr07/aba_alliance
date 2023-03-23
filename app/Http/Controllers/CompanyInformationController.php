@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\CompanyInformation;
-use App\Country;
-use App\District;
-use App\Region;
-use App\Ward;
+use App\Models\CompanyInformation;
+use App\Models\Country;
+use App\Models\District;
+use App\Models\Region;
+use App\Models\Ward;
 use Illuminate\Http\Request;
 use Gate;
 

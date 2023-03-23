@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Holiday;
-use App\MyFunctions;
+use App\Models\Holiday;
+use App\Models\MyFunctions;
 use Illuminate\Http\Request;
 use Gate;
 

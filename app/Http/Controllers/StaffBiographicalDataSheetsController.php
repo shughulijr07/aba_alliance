@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\Region;
-use App\Staff;
-use App\StaffBiographicalDataSheet;
-use App\StaffJobTitle;
-use App\SystemRole;
-use App\User;
-use App\UserActivity;
+use App\Models\Department;
+use App\Models\Region;
+use App\Models\Staff;
+use App\Models\StaffBiographicalDataSheet;
+use App\Models\StaffJobTitle;
+use App\Models\SystemRole;
+use App\Models\User;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Gate;

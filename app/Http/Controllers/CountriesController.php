@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\AfricanCountry;
-use App\country;
+use App\Models\AfricanCountry;
+use App\Models\country;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 use Gate;

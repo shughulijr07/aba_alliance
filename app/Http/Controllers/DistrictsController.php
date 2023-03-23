@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Country;
-use App\Region;
-use App\District;
+use App\Models\Country;
+use App\Models\Region;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Gate;
+
 
 class DistrictsController extends Controller
 {

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 
 
-use App\Activity;
-use App\CompanyInformation;
-use App\Helper;
+use App\Models\Activity;
+use App\Models\CompanyInformation;
+use App\Models\Helper;
 use App\Http\Controllers\Controller;
 use App\Imports\ExcelImport;
-use App\Project;
-use App\UserActivity;
+use App\Models\Project;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

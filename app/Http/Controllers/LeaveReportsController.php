@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Leave;
-use App\LeaveType;
-use App\MyFunctions;
-use App\Staff;
+use App\Models\Leave;
+use App\Models\LeaveType;
+use App\Models\MyFunctions;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Gate;
 use Illuminate\Support\Facades\DB;

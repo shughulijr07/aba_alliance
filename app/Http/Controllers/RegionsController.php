@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Country;
-use App\Region;
+use App\Models\Country;
+use App\Models\Region;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 use Illuminate\Support\Facades\DB;

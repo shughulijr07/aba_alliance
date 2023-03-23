@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\GeneralSetting;
+use App\Models\GeneralSetting;
 use Illuminate\Http\Request;
 use Gate;
 

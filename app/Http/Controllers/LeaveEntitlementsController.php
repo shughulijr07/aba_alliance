@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\GeneralSetting;
-use App\LeaveEntitlement;
-use App\LeaveEntitlementExtension;
-use App\LeaveEntitlementLine;
-use App\LeaveType;
-use App\Staff;
+use App\Models\GeneralSetting;
+use App\Models\LeaveEntitlement;
+use App\Models\LeaveEntitlementExtension;
+use App\Models\LeaveEntitlementLine;
+use App\Models\LeaveType;
+use App\Models\Staff;
 use Illuminate\Http\Request;
 use Gate;
 

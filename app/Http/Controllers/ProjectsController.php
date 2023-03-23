@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Activity;
-use App\CompanyInformation;
-use App\Project;
-use App\UserActivity;
+use App\Models\Activity;
+use App\Models\CompanyInformation;
+use App\Models\Project;
+use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Gate;
 use Illuminate\Support\Facades\Auth;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\NumberedItem;
-use App\NumberSeries;
+use App\Models\NumberedItem;
+use App\Models\NumberSeries;
 use Illuminate\Http\Request;
 use Gate;
 

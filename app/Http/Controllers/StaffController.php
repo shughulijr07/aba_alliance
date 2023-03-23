@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
-use App\GlAccount;
-use App\Helper;
+use App\Models\Department;
+use App\Models\GlAccount;
+use App\Models\Helper;
 use App\Imports\ExcelImport;
-use App\Region;
-use App\Staff;
-use App\StaffJobTitle;
-use App\StaffStatusChange;
-use App\Supervisor;
-use App\SystemRole;
-use App\TimeSheet;
-use App\User;
+use App\Models\Region;
+use App\Models\Staff;
+use App\Models\StaffJobTitle;
+use App\Models\StaffStatusChange;
+use App\Models\Supervisor;
+use App\Models\SystemRole;
+use App\Models\TimeSheet;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Gate;
