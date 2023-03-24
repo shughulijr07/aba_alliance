@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-           Schema::create('leave_payments', function (Blueprint $table) {
+           Schema::create('leave_plan_changed_supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('leave_id');
-            $table->string('amount');
-            $table->string('confirmed_by');
-            $table->string('comments');
+            $table->unsignedBigInteger('leave_plan_id');
+            $table->unsignedBigInteger('old_spv_id');
+            $table->unsignedBigInteger('new_spv_id');
+            $table->string('changed_by');
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_payments');
+        Schema::dropIfExists('leave_plan_changed_supervisors');
     }
 };

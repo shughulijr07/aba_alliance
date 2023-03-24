@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-           Schema::create('leave_payments', function (Blueprint $table) {
+           Schema::create('leave_rejects', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('leave_id');
-            $table->string('amount');
-            $table->string('confirmed_by');
-            $table->string('comments');
+            $table->string('level');
+            $table->string('done_by');
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leave_payments');
+        Schema::dropIfExists('leave_rejects');
     }
 };
