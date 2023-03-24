@@ -6,12 +6,10 @@ use App\Models\AfricanCountry;
 use App\Models\country;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
-use Gate;
+use Illuminate\Auth\Access\Gate; //changed
 
 class CountriesController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth');
