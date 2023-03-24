@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('category');
-            $table->unsignedBigInteger('role_id');
+        Schema::create('daily_time_sheets', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('staff_id');
+            $table->string('timesheet_date');
+            $table->string('responsive_spv');
             $table->string('status');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('daily_time_sheets');
     }
 };
