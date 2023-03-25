@@ -38,7 +38,7 @@
 
                 <?php $n = 1; ?>
                 @foreach($time_sheets as $time_sheet)
-                <?php $supervisor = \App\Staff::find($time_sheet->responsible_spv); ?>
+                <?php $supervisor = \App\Models\Staff::find($time_sheet->responsible_spv); ?>
                 <tr class='clickable-row' data-href="/time_sheet_admin/{{ $time_sheet->id }}">
                     <td>{{ $n }}</td>
                     <td>{{ ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name) }}</td>

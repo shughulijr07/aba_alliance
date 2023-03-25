@@ -232,7 +232,7 @@
                                     {{ Auth::user()->name }}
                                 </div>
                                 <div class="widget-subheading">
-                                    user role is here
+                                      {{ ucwords(str_replace('-',' ',Auth::user()->system_role->role_name))  }}
                                 </div>
                             </div>
                         </div>

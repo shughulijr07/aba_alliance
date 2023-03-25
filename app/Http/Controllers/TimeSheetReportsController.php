@@ -255,8 +255,6 @@ class TimeSheetReportsController extends Controller
             $query = $query->where('time_sheets.month','=',$month);
         }
 
-
-
         $time_sheets = $query->get();
 
         $statements = $this->getTimeSheetStatementsData($time_sheets);
