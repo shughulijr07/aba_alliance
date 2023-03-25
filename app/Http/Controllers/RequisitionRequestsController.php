@@ -18,13 +18,13 @@ use App\Models\Staff;
 use App\Models\Activity;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use App\RequisitionRequest;
-use App\RequisitionRequestApproval;
-use App\RequisitionChangedSupervisor;
-use App\RequisitionRequestLine;
-use App\RequisitionRequestReject;
-use App\RequisitionRequestReturn;
-use Gate;
+use App\Models\RequisitionRequest;
+use App\Models\RequisitionRequestApproval;
+use App\Models\RequisitionChangedSupervisor;
+use App\Models\RequisitionRequestLine;
+use App\Models\RequisitionRequestReject;
+use App\Models\RequisitionRequestReturn;
+use Illuminate\Support\Facades\Gate;
 
 class RequisitionRequestsController extends Controller
 {
