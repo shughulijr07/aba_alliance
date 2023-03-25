@@ -89,14 +89,14 @@ Route::get('/email', function(){
 
 
 /******************************** BASIC ROUTES *********************************/
-Route::get('super-administrator',[DashboardsController::class,"showSuperAdminDashboard"])->middleware('super-admin');
-Route::get('system-administrator',[DashboardsController::class,"showSystemAdministratorDashboard"])->middleware('system-admin');
-Route::get('finance-director',[DashboardsController::class, 'showFDDashboard'])->middleware('fd');
-Route::get('managing-director',[DashboardsController::class, 'showMDDashboard'])->middleware('md');
-Route::get('human-resource-manager',[DashboardsController::class, 'showHRMDashboard'])->middleware('hrm');
-Route::get('accountant',[DashboardsController::class, 'showAccountantDashboard'])->middleware('accountant');
-Route::get('supervisor',[DashboardsController::class, 'showSupervisorDashboard'])->middleware('supervisor');
-Route::get('employee',[DashboardsController::class, 'showEmployeeDashboard'])->middleware('employee');
+Route::get('super-administrator',[DashboardsController::class,"showSuperAdminDashboard"]);
+Route::get('system-administrator',[DashboardsController::class,"showSystemAdministratorDashboard"]);
+Route::get('finance-director',[DashboardsController::class, 'showFDDashboard']);
+Route::get('managing-director',[DashboardsController::class, 'showMDDashboard']);
+Route::get('human-resource-manager',[DashboardsController::class, 'showHRMDashboard']);
+Route::get('accountant',[DashboardsController::class, 'showAccountantDashboard']);
+Route::get('supervisor',[DashboardsController::class, 'showSupervisorDashboard']);
+Route::get('employee',[DashboardsController::class, 'showEmployeeDashboard']);
 
 
 
@@ -342,7 +342,6 @@ Route::post('/fourth_quoter_staff_performance_assessment',[StaffPerformancesCont
 
 Route::get('/staff_supervisors',[StaffController::class,'supervisorsIndex']);
 Route::post('/staff_supervisor_update',[StaffController::class,'supervisorsUpdate']);
-
 Route::get('/create_staff_biographical_data_sheets/{staff_id}',[StaffBiographicalDataSheetsController::class, 'createForStaff']);
 Route::get('/reset_staff_password/{id}',[UserAccountController::class, 'resetPassword']);
 Route::get('/company_information',[CompanyInformationController::class, 'show']);

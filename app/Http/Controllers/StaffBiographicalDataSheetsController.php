@@ -12,7 +12,7 @@ use App\Models\User;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Symfony\Component\Console\Helper\Table;
 
 
