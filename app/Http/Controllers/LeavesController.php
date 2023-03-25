@@ -23,7 +23,7 @@ use App\Models\MyFunctions;
 use App\Models\Staff;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class LeavesController extends Controller

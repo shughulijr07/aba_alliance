@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Holiday;
 use App\Models\MyFunctions;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class HolidaysController extends Controller
 {

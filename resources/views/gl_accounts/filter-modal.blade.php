@@ -104,7 +104,7 @@
                             let messageTop = "";
 
                             let titleBanner = $('#report-title-banner').html();
-                            let reportTitle = '{{$reportTitle}}';
+                            let reportTitle = '{{$reportTitle ?? ''}}';
                             let table = $('#glAccountsTable').DataTable();
                             let searchValues = table.search();
 
@@ -145,7 +145,7 @@
                         },
 
                         title: function(){
-                            return '{{$reportTitle}}';
+                            return '{{$reportTitle ?? ''}}';
                         },
 
                         messageTop: function() {
@@ -180,7 +180,7 @@
                             doc.defaultStyle.font = "Roboto";
 
                             doc.pageMargins = [40, 80, 40, 30];
-                            const companyLogoBase64 = '{{$companyLogoBase64 }}';
+                            const companyLogoBase64 = '{{$companyLogoBase64 ?? '' }}';
                             doc.header = [
                                 {
                                     margin: [30,15,30,10],
@@ -306,7 +306,7 @@
                             columns: ':visible'
                         },
                         title: function(){
-                            return '{{$reportTitle}}';
+                            return '{{$reportTitle ?? null}}';
                         },
                         message: function() {
                             let messageTop = "";
@@ -328,7 +328,7 @@
                             columns: ':visible'
                         },
                         title: function(){
-                            return '{{$reportTitle}}';
+                            return '{{$reportTitle ?? ''}}';
                         },
                         message: function() {
                             let messageTop = "";
@@ -350,7 +350,7 @@
                             columns: ':visible'
                         },
                         message: function(){
-                            return '{{$reportTitle}}';
+                            return '{{$reportTitle ?? ''}}';
                         },
                         title: function() {
                             let messageTop = "";

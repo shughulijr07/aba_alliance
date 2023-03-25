@@ -48,6 +48,7 @@ class CompanyInformationController extends Controller
         $region_id = $company_info->region_id;
         $district_id = $company_info->district_id;
         $ward_id = $company_info->ward_id;
+        $ward_id = $company_info->ward_id;
 
         $model_name = 'company_information';
         $controller_name = 'company_information';
@@ -55,7 +56,7 @@ class CompanyInformationController extends Controller
 
         return view('company_information.show',
             compact('company_info','countries', 'regions', 'districts', 'wards',  'country_id', 'region_id',
-                'district_id', 'ward_id', 'terms_and_conditions',
+                'district_id', 'ward_id',
                 'model_name', 'controller_name', 'view_type'));
     }
 
