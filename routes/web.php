@@ -89,7 +89,7 @@ Route::get('/email', function(){
 
 
 /******************************** BASIC ROUTES *********************************/
-Route::get('super-administrator',[DashboardsController::class,"showSuperAdminDashboard"]);
+Route::get('super-administrator',[DashboardsController::class,"showSuperAdminDashboard"])->middleware('super-admin');
 Route::get('system-administrator',[DashboardsController::class,"showSystemAdministratorDashboard"])->middleware('system-admin');
 Route::get('finance-director',[DashboardsController::class, 'showFDDashboard'])->middleware('fd');
 Route::get('managing-director',[DashboardsController::class, 'showMDDashboard'])->middleware('md');
