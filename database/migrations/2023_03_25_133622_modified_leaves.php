@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+           Schema::create('modified_leaves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('region_id');
-            $table->string('name');
+            $table->unsignedBigInteger('leave_id');
+            $table->string('modified_starting_date');
+            $table->string('modified_ending_date');
+            $table->string('modified_leave_payment');
+            $table->string('modified_by');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('modified_leaves');
     }
 };

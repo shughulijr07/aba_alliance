@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+           Schema::create('performance_objective_lines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('region_id');
-            $table->string('name');
+            $table->unsignedBigInteger('performance_objective_id');
+            $table->string('data');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('performance_objective_lines');
     }
 };

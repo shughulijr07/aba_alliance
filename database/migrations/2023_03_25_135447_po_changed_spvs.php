@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+           Schema::create('po_changed_spvs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('region_id');
-            $table->string('name');
+            $table->unsignedBigInteger('performance_objective_id');
+            $table->unsignedBigInteger('old_spv_id');
+            $table->unsignedBigInteger('new_spv_id');
+            $table->string('changed_by');
+            $table->string('reason');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('po_changed_spvs');
     }
 };

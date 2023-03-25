@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('region_id');
-            $table->string('name');
+           Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email');
+            $table->string('token');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('password_resets');
     }
 };
