@@ -135,6 +135,8 @@ Route::post('/generate_leave_report',[LeaveReportsController::class, 'generateRe
 Route::resource('leave_types', LeaveTypesController::class);
 
 //LeavesPlan Routes
+Route::resource('leave_plans', LeavePlansController::class);
+
 Route::get('/leave_plan_remove_line/{line_id}',[LeavePlansController::class,'removeLine']);
 Route::get('/leave_plan_submit/{leave_plan_id}',[LeavePlansController::class,'submitLeavePlan']);
 Route::get('/leave_plan_admin/{id}',[LeavePlansController::class,'showAdmin']);
@@ -147,7 +149,6 @@ Route::post('/approve_leave_plan',[LeavePlansController::class,'approveLeavePlan
 Route::post('/return_leave_plan',[LeavePlansController::class,'returnLeavePlan']);
 Route::post('/change_leave_plan_spv',[LeavePlansController::class,'changeSupervisor']);
 Route::post('/reject_leave_plan',[LeavePlansController::class,'rejectLeavePlan']);
-Route::resource('leave_plans', LeavePlansController::class );
 
 
 /************ TIME SHEETS MANAGEMENT ROUTES *************************/

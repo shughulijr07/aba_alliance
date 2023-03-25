@@ -123,7 +123,7 @@ class TimeSheet extends Model
 
         $employee_id = 0;
         $current_user_role = $user->role_id;
-        if($user->category == "staff"){
+        if($user->category == "staff" ){
             $employee_id = $user->staff->id;
         }
 

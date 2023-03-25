@@ -402,7 +402,8 @@ class Leave extends Model
 
         $employee_id = 0;
         $current_user_role = $user->role_id;
-        if($user->category == "staff" && $user->id != 1){  // && $user->id != 1 is added abd
+
+        if($user->category == "staff"){
             $employee_id = $user->staff->id;
         }
 

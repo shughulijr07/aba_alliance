@@ -22,7 +22,7 @@ use App\Models\LeaveType;
 use App\Models\MyFunctions;
 use App\Models\Staff;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class LeavePlansController extends Controller
 {
