@@ -47,7 +47,6 @@ class RetirementRequestsController extends Controller
         }
 
         $employee_id = auth()->user()->staff->id;
-        dd($employee_id);
 
         //for my travel requests
         $travel_requests = RetirementRequest::where('status', '=', $status)->where('staff_id','=',$employee_id)->get();
@@ -178,7 +177,7 @@ class RetirementRequestsController extends Controller
         $query = $query->where('staff_id', '=', $staff_id);
         $query = $query->where('status', '=', '50');//approved
         $query = $query->where('year', '=', $year);
-
+        $months = 'no column';
         $travel_requests = $query->get();
 
         $model_name = 'travel_request';

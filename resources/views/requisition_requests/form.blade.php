@@ -120,154 +120,154 @@ if( isset($travel_request->status) && isset($travel_request->staff_id) ){
                                         <a href="{{url('/requisitionFilePreview',$travel_request->id)}}" class="btn btn-secondary btn-s" role="button"><i class="fa fa-file" aria-hidden="true"></i>View attached file</a>
                                         @endif
 
-                                        <!-- Lines -->
-                                        <fieldset {{$disabled}}>
-                                            <legend class="text-danger"></legend>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <table style="width: 100%;" id="travel_request_table" class="table table-hover table-striped table-bordered">
-                                                        <thead>
-                                                        <tr>
-                                                            <th style="width: 10%;" >S/N</th>
-                                                            <th style="width: 20%;" >Descriptions</th>
-                                                            <th style="width: 15%;" >Quantity</th>
-                                                            
-                                                            <th style="width: 5%;" class="text-center">
-                                                                <input type="checkbox" name="checkbox_0" class="select-multiple-rows" value="0">
-                                                            </th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        @if(count($travel_request->lines) == 0)
-                                                            <tr class="data-row" id="travel_request_table_row_1">
-                                                                <td class="data-column no">
-                                                                    <input name="travel_request_table_row_1[]" class="column-input row-no text-left" autocomplete="off" value="1">
-                                                                </td>
-                                                                <td class="data-column time">
-                                                                    <input name="travel_request_table_row_1[]" class="column-input account-code" value="{{old('travel_request_table_row_1')[1]}}" autocomplete="off">
-                                                                </td>                             
-                                                                <td class="data-column time">
-                                                                    <input name="travel_request_table_row_1[]" class="column-input rate text-right" value="{{old('travel_request_table_row_1')[2]}}" autocomplete="off" readonly>
-                                                                </td>
-                                                                
-                                                                <td class="data-column text-center">
-                                                                    <input type="checkbox" name="travel_request_table_row_1[]" class="select-one-row-checkbox" value="1">
-                                                                </td>
-                                                            </tr>
+            <!-- Lines -->
+            <fieldset {{$disabled}}>
+                <legend class="text-danger"></legend>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table style="width: 100%;" id="travel_request_table" class="table table-hover table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th style="width: 10%;" >S/N</th>
+                                <th style="width: 20%;" >Descriptions</th>
+                                <th style="width: 15%;" >Quantity</th>
+                                
+                                <th style="width: 5%;" class="text-center">
+                                    <input type="checkbox" name="checkbox_0" class="select-multiple-rows" value="0">
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @if(count($travel_request->lines) == 0)
+                                <tr class="data-row" id="travel_request_table_row_1">
+                                    <td class="data-column no">
+                                        <input name="travel_request_table_row_1[]" class="column-input row-no text-left" autocomplete="off" value="1">
+                                    </td>
+                                    <td class="data-column time">
+                                        <input name="travel_request_table_row_1[]" class="column-input account-code" value="{{old('travel_request_table_row_1')[1] ?? ''}}" autocomplete="off">
+                                    </td>                             
+                                    <td class="data-column time">
+                                        <input name="travel_request_table_row_1[]" class="column-input rate text-right" value="{{old('travel_request_table_row_1')[2] ?? ''}}" autocomplete="off" readonly>
+                                    </td>
+                                    
+                                    <td class="data-column text-center">
+                                        <input type="checkbox" name="travel_request_table_row_1[]" class="select-one-row-checkbox" value="1">
+                                    </td>
+                                </tr>
 
-                                                            <?php $m=2;?>
-                                                            @while(!is_null(old('travel_request_table_row_'.$m)))
-                                                                <tr class="data-row" id="travel_request_table_row_{{$m}}">
-                                                                    <td class="data-column no">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input row-no" autocomplete="off" value="{{$m}}">
-                                                                    </td>
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[1] }}">
-                                                                    </td>
-                                                                   
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[2] }}" readonly>
-                                                                    </td>
-                                                                    
-                                                                    <td class="data-column text-center">
-                                                                        <input type="checkbox" name="travel_request_table_row_{{$m}}[]" class="select-one-row-checkbox" value="{{$m}}">
-                                                                    </td>
-                                                                </tr>
-                                                                <?php  $m++;?>
-                                                            @endwhile
-                                                        @else
-                                                            <?php $n = 1;?>
-                                                            @foreach($lines as $line)
-                                                                <tr class="data-row" id="travel_request_table_row_{{$n}}">
-                                                                    <td class="data-column">
-                                                                        <input name="travel_request_table_row_{{$n}}[]" class="column-input row-no" autocomplete="off" value="{{$n}}">
-                                                                    </td>
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$n}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$n)[1] ?? $line[1]}}">
-                                                                    </td>
-                                                                   
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$n}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$n)[2] ?? $line[2]}}" readonly>
-                                                                    </td>
-                                                                    
-                                                                    <td class="data-column text-center">
-                                                                        <input type="checkbox" name="travel_request_table_row_{{$n}}[]" class="select-one-row-checkbox" value="{{$n}}">
-                                                                    </td>
-                                                                </tr>
-                                                                <?php $n++;?>
-                                                            @endforeach
+                                <?php $m=2;?>
+                                @while(!is_null(old('travel_request_table_row_'.$m)))
+                                    <tr class="data-row" id="travel_request_table_row_{{$m}}">
+                                        <td class="data-column no">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input row-no" autocomplete="off" value="{{$m}}">
+                                        </td>
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[1] }}">
+                                        </td>
+                                        
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[2] }}" readonly>
+                                        </td>
+                                        
+                                        <td class="data-column text-center">
+                                            <input type="checkbox" name="travel_request_table_row_{{$m}}[]" class="select-one-row-checkbox" value="{{$m}}">
+                                        </td>
+                                    </tr>
+                                    <?php  $m++;?>
+                                @endwhile
+                            @else
+                                <?php $n = 1;?>
+                                @foreach($lines as $line)
+                                    <tr class="data-row" id="travel_request_table_row_{{$n}}">
+                                        <td class="data-column">
+                                            <input name="travel_request_table_row_{{$n}}[]" class="column-input row-no" autocomplete="off" value="{{$n}}">
+                                        </td>
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$n}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$n)[1] ?? $line[1]}}">
+                                        </td>
+                                        
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$n}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$n)[2] ?? $line[2]}}" readonly>
+                                        </td>
+                                        
+                                        <td class="data-column text-center">
+                                            <input type="checkbox" name="travel_request_table_row_{{$n}}[]" class="select-one-row-checkbox" value="{{$n}}">
+                                        </td>
+                                    </tr>
+                                    <?php $n++;?>
+                                @endforeach
 
-                                                            <?php $m=$n;?>
-                                                            @while(!is_null(old('travel_request_table_row_'.$m)))
-                                                                <tr class="data-row" id="travel_request_table_row_{{$m}}">
-                                                                    <td class="data-column no">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input line-no" autocomplete="off" value="{{$m}}">
-                                                                    </td>
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[1] }}">
-                                                                    </td>
-                                                                    
-                                                                    <td class="data-column time">
-                                                                        <input name="travel_request_table_row_{{$m}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[2] }}" readonly>
-                                                                    </td>
-                                                                
-                                                                   
-                                                                    <td class="data-column text-center">
-                                                                        <input type="checkbox" name="travel_request_table_row_{{$m}}[]" class="select-one-row-checkbox" value="{{$m}}">
-                                                                    </td>
-                                                                </tr>
-                                                                <?php  $m++;?>
-                                                            @endwhile
-                                                        @endif
-                                                        </tbody>
-                                                        <tfoot>
-                                                        <th style="width: 10%;" >S/N</th>
-                                                            <th style="width: 20%;" >Descriptions</th>
-                                                            <th style="width: 15%;" >Quantity</th>
-                                                           
-                                                            <th style="width: 5%;" class="text-center">
-                                                                <input type="checkbox" name="checkbox_0" class="select-multiple-rows" value="0">
-                                                            </th> 
-                                                        </tfoot>
-                                                        
+                                <?php $m=$n;?>
+                                @while(!is_null(old('travel_request_table_row_'.$m)))
+                                    <tr class="data-row" id="travel_request_table_row_{{$m}}">
+                                        <td class="data-column no">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input line-no" autocomplete="off" value="{{$m}}">
+                                        </td>
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input account-code" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[1] }}">
+                                        </td>
+                                        
+                                        <td class="data-column time">
+                                            <input name="travel_request_table_row_{{$m}}[]" class="column-input rate text-right" autocomplete="off" value="{{ old('travel_request_table_row_'.$m)[2] }}" readonly>
+                                        </td>
+                                    
+                                        
+                                        <td class="data-column text-center">
+                                            <input type="checkbox" name="travel_request_table_row_{{$m}}[]" class="select-one-row-checkbox" value="{{$m}}">
+                                        </td>
+                                    </tr>
+                                    <?php  $m++;?>
+                                @endwhile
+                            @endif
+                            </tbody>
+                            <tfoot>
+                            <th style="width: 10%;" >S/N</th>
+                                <th style="width: 20%;" >Descriptions</th>
+                                <th style="width: 15%;" >Quantity</th>
+                                
+                                <th style="width: 5%;" class="text-center">
+                                    <input type="checkbox" name="checkbox_0" class="select-multiple-rows" value="0">
+                                </th> 
+                            </tfoot>
+                            
 
-                                                    </table>
+                        </table>
 
-                                                    <div class="text-center {{$visibility}}">
-                                                        <button class="btn btn-secondary btn-s add_row_after">
-                                                            <i class="fa fa-fw" aria-hidden="true" title="Copy to use plus"></i>
-                                                            Add Row After
-                                                        </button>
-                                                        <button class="btn btn-secondary btn-s add_row_before">
-                                                            <i class="fa fa-fw" aria-hidden="true" title="Copy to use plus"></i>
-                                                            Add Row Before
-                                                        </button>
-                                                        <button class="btn btn-secondary btn-s remove_row">
-                                                            <i class="fa fa-fw" aria-hidden="true" title="Copy to use minus"></i>
-                                                            Remove Line
-                                                        </button>
-                                                    </div>
+                        <div class="text-center {{$visibility}}">
+                            <button class="btn btn-secondary btn-s add_row_after">
+                                <i class="fa fa-fw" aria-hidden="true" title="Copy to use plus"></i>
+                                Add Row After
+                            </button>
+                            <button class="btn btn-secondary btn-s add_row_before">
+                                <i class="fa fa-fw" aria-hidden="true" title="Copy to use plus"></i>
+                                Add Row Before
+                            </button>
+                            <button class="btn btn-secondary btn-s remove_row">
+                                <i class="fa fa-fw" aria-hidden="true" title="Copy to use minus"></i>
+                                Remove Line
+                            </button>
+                        </div>
 
-                                                </div>
-                                                <div class="col-md-12 mt-3">
-                                                    <div class="position-relative form-group">
-                                                        <input type="hidden" name="terms[]" value="no">
-                                                        <input type="checkbox" name="terms[]" id="terms" value="yes" @if( (is_array(old('terms')) &&  in_array('yes',old('terms'))) || in_array('yes',$terms )) checked @endif >
-                                                        <span class="text-primary">
-                                            I <span class="text-danger">{{$employee_name}}</span>  declare by accepting funds from SHDEPHA that I will retire these funds according to
-                                            SHDEPHA  policies and procedures with genuine receipts.
-                                        </span>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <div class="position-relative form-group">
+                            <input type="hidden" name="terms[]" value="no">
+                            <input type="checkbox" name="terms[]" id="terms" value="yes" @if( (is_array(old('terms')) &&  in_array('yes',old('terms'))) || in_array('yes',$terms )) checked @endif >
+                            <span class="text-primary">
+                I <span class="text-danger">{{$employee_name}}</span>  declare by accepting funds from SHDEPHA that I will retire these funds according to
+                SHDEPHA  policies and procedures with genuine receipts.
+            </span>
 
-                                                        @error('you must declare')
-                                                        <span class="invalid-feedback" role="alert" style="display: block">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <!-- End Of Lines -->
+                            @error('you must declare')
+                            <span class="invalid-feedback" role="alert" style="display: block">
+                <strong>{{ $message }}</strong>
+            </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <!-- End Of Lines -->
                                         <button class="mt-2 btn btn-primary {{$visibility}}" type="submit" id="submit_btn">Submit Requisition Request</button>
 
                                     </form>
