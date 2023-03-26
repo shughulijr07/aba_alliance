@@ -191,7 +191,7 @@
                                                                     {{ Auth::user()->name }}
                                                                 </div>
                                                                 <div class="widget-subheading opacity-8">
-                                    {{ ucwords(str_replace('-',' ',Auth::user()->system_role->role_name))  }}
+                                                                   {{ ucwords(str_replace('-',' ',Auth::user()->system_role->role_name))  }}
                                                                 </div>
                                                             </div>
                                                             <div class="widget-content-right mr-2">

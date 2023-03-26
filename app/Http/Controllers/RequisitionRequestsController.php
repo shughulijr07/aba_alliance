@@ -114,9 +114,10 @@ class RequisitionRequestsController extends Controller
         $model_name = 'travel_request';
         $controller_name = 'travel_requests';
         $view_type = 'index';
+        $all_staff =  Staff::get_valid_staff_list();
 
         return view('requisition_requests.my_records_search',
-            compact(   'year', 'initial_year',
+            compact(   'year', 'initial_year', 'all_staff',
                 'model_name', 'controller_name', 'view_type'));
 
     }
@@ -141,9 +142,11 @@ class RequisitionRequestsController extends Controller
         $model_name = 'travel_request';
         $controller_name = 'travel_requests';
         $view_type = 'index';
+        $all_staff =  Staff::get_valid_staff_list();
+
 
         return view('requisition_requests.my_records_list',
-            compact(  'travel_requests',  'year','months','travel_request_statuses',
+            compact(  'travel_requests', 'all_staff', 'year','months','travel_request_statuses',
                 'model_name', 'controller_name', 'view_type'));
 
     }
