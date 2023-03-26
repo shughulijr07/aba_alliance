@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/items','APIController@itemsIndex');
+Route::get('/customers','APIController@customersIndex');
+Route::get('/sales_invoice_headers','APIController@salesInvoiceHeadersList');
+Route::get('/sales_invoice_lines','APIController@salesInvoiceLinesList');
+Route::get('/value_entries','APIController@valueEntries');
