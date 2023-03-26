@@ -18,7 +18,7 @@ use App\Models\PerformanceObjectiveChangedSupervisor;
 use App\Models\PerformanceObjectiveReject;
 use App\Models\PerformanceObjectiveReturn;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class PerformanceObjectivesController extends Controller
 {

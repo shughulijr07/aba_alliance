@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SystemRole;
 use App\Models\SystemRolePermission;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class SystemRolesController extends Controller

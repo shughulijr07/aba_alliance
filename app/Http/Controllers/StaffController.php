@@ -16,7 +16,7 @@ use App\Models\TimeSheet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class StaffController extends Controller
 {

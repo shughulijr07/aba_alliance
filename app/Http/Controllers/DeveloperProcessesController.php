@@ -55,7 +55,7 @@ use App\Models\TravelRequestReject;
 use App\Models\TravelRequestReturn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class DeveloperProcessesController extends Controller
 {

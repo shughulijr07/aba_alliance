@@ -8,7 +8,7 @@ use App\Models\District;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class WardsController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\NumberedItem;
 use App\Models\NumberSeries;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class NumberSeriesController extends Controller
 {

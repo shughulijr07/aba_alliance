@@ -6,7 +6,7 @@ use App\Events\ResetPasswordEvent;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserAccountController extends Controller

@@ -25,7 +25,7 @@ use App\Models\TravelRequestReject;
 use App\Models\TravelRequestReturn;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class TravelRequestsController extends Controller
 {

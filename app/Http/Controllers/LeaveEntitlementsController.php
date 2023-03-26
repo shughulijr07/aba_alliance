@@ -9,7 +9,7 @@ use App\Models\LeaveEntitlementLine;
 use App\Models\LeaveType;
 use App\Models\Staff;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class LeaveEntitlementsController extends Controller
 {

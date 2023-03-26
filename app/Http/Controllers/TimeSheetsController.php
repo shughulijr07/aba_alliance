@@ -25,7 +25,7 @@ use App\Models\TimeSheetReject;
 use App\Models\TimeSheetReturn;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class TimeSheetsController extends Controller
 {

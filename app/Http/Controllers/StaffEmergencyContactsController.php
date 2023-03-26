@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\StaffEmergencyContact;
 use App\Models\UserActivity;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class StaffEmergencyContactsController extends Controller

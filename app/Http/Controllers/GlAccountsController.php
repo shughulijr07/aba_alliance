@@ -9,7 +9,7 @@ use App\Imports\ExcelImport;
 use App\Models\Project;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;

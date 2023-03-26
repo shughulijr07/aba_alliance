@@ -7,7 +7,7 @@ use App\Models\Region;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
 use Illuminate\Support\Facades\DB;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class RegionsController extends Controller
 {

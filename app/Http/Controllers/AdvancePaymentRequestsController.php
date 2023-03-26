@@ -21,7 +21,7 @@ use App\Models\Supervisor;
 use App\Models\User;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class AdvancePaymentRequestsController extends Controller

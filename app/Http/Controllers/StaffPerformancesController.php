@@ -7,7 +7,7 @@ use App\Models\PerformanceObjective;
 use App\Models\Staff;
 use App\Models\StaffPerformance;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class StaffPerformancesController extends Controller
 {

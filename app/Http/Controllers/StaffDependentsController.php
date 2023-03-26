@@ -6,7 +6,7 @@ use App\Models\MyFunctions;
 use App\Models\StaffDependent;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class StaffDependentsController extends Controller
 {

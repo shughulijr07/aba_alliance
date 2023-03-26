@@ -7,7 +7,7 @@ use App\Models\Region;
 use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 
 class DistrictsController extends Controller

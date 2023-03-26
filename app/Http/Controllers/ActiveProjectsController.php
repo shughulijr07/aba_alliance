@@ -6,7 +6,7 @@ use App\Models\ActiveProject;
 use App\Models\Project;
 use App\Models\TimeSheet;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class ActiveProjectsController extends Controller
 {

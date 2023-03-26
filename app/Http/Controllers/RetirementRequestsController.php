@@ -26,7 +26,7 @@ use App\Models\RetirementRequestReject;
 use App\Models\RetirementRequestReturn;
 use App\Models\UserActivity;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class RetirementRequestsController extends Controller
 {

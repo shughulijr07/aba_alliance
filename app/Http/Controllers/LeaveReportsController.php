@@ -7,7 +7,7 @@ use App\Models\LeaveType;
 use App\Models\MyFunctions;
 use App\Models\Staff;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class LeaveReportsController extends Controller

@@ -16,22 +16,22 @@ class DashboardsController extends Controller
 {
 
     public function showSuperAdminDashboard(){
-        // $leavePlans = LeavePlan::countLeavePlans();
-        // $leaveRequests = Leave::countLeaveRequests();
-        // $timeSheets = TimeSheet::countTimeSheets();
-        // $travelRequests = TravelRequest::countTravelRequests();
-        // $performanceObjectives = PerformanceObjective::countPerformanceObjectives();
-        // $paymentRequests= AdvancePaymentRequest::countRequests();
-        // $requisitionRequests = RequisitionRequest::countTravelRequests();
-        // $retirementRequests = RetirementRequest::countTravelRequests();
+        $leavePlans = LeavePlan::countLeavePlans();
+        $leaveRequests = Leave::countLeaveRequests();
+        $timeSheets = TimeSheet::countTimeSheets();
+        $travelRequests = TravelRequest::countTravelRequests();
+        $performanceObjectives = PerformanceObjective::countPerformanceObjectives();
+        $paymentRequests= AdvancePaymentRequest::countRequests();
+        $requisitionRequests = RequisitionRequest::countTravelRequests();
+        $retirementRequests = RetirementRequest::countTravelRequests();
 
-        // $model_name = "";
-        // $view_type = "";
-        // $controller_name = "";
+        $model_name = "";
+        $view_type = "";
+        $controller_name = "";
 
-        return view('admin.super_admin_dashboard'
-            // compact('leavePlans','leaveRequests','timeSheets','travelRequests','performanceObjectives',
-            //     'retirementRequests','requisitionRequests','paymentRequests','controller_name','model_name','view_type')
+        return view('admin.super_admin_dashboard',
+            compact('leavePlans','leaveRequests','timeSheets','travelRequests','performanceObjectives',
+                'retirementRequests','requisitionRequests','paymentRequests','controller_name','model_name','view_type')
             );
     }
 

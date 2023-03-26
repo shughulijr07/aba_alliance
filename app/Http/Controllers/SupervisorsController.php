@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Staff;
 use App\Models\Supervisor;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 
 class SupervisorsController extends Controller
 {

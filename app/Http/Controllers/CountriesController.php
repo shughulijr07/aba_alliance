@@ -6,7 +6,7 @@ use App\Models\AfricanCountry;
 use App\Models\country;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Constraint\Count;
-use Illuminate\Auth\Access\Gate; //changed
+use Illuminate\Support\Facades\Gate; //changed
 
 class CountriesController extends Controller
 {
