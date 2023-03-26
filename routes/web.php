@@ -132,10 +132,10 @@ Route::get('/perform_carry_over/{staff_id}',[LeaveEntitlementsController::class,
 
 Route::get('/leave_reports',[LeaveReportsController::class, 'index']);
 Route::post('/generate_leave_report',[LeaveReportsController::class, 'generateReport']);
-Route::resource('leave_types', LeaveTypesController::class);
+Route::resource('leave_types', 'LeaveTypesController');
 
 //LeavesPlan Routes
-Route::resource('leave_plans', LeavePlansController::class);
+Route::resource('leave_plans', 'LeavePlansController');
 
 Route::get('/leave_plan_remove_line/{line_id}',[LeavePlansController::class,'removeLine']);
 Route::get('/leave_plan_submit/{leave_plan_id}',[LeavePlansController::class,'submitLeavePlan']);
@@ -180,11 +180,11 @@ Route::get('/time_sheet_reports',[TimeSheetReportsController::class,'index']);
 Route::post('/generate_time_sheet_report',[TimeSheetReportsController::class,'generateReport']);
 Route::get('/holidays_list/{year}',[HolidaysController::class, 'index2']);
 Route::get('/supervisors/delete/{supervisor_id}',[SupervisorsController::class, 'delete']);
-Route::resource('supervisors',SupervisorsController::class);
+Route::resource('supervisors','SupervisorsController');
 
 
 /************ PROJECTS ROUTES *************************/
-Route::resource('holidays',HolidaysController::class);
+Route::resource('holidays','HolidaysController');
 Route::get('/projects/ajaxGetList/', [ProjectsController::class, 'ajaxGetList'])->name('projects.ajaxGetList');
 Route::post('/projects/ajaxDelete/', [ProjectsController::class, 'ajaxDelete'])->name('projects.ajaxDelete');
 Route::get('/activities/getList/', [ActivitiesController::class, 'getList'])->name('activities.getList');
