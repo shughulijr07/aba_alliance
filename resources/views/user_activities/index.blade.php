@@ -43,7 +43,7 @@
                 @foreach($user_activities as $activity)
                 <tr class='clickable-row' data-href="/user_activities/{{ $activity->id }}">
                     <td>{{ $n }}</td>
-                    <td>{{ $activity->user->name }}</td>
+                    <td>{{ $activity->user->name ?? ''}}</td>
                     <td>{{ $activity->action }}</td>
                     <td>{{ $activity->item }}</td>
                     <td>{{ $activity->item_id }}</td>

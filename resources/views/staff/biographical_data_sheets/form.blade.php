@@ -399,16 +399,16 @@ if( !in_array(auth()->user()->role_id, [1,3]) ){
                                     <input name="education_table_row_1[]" class="column-input row-no" autocomplete="off" value="1" readonly>
                                 </td>
                                 <td class="data-column">
-                                    <input name="education_table_row_1[]" class="column-input name" value="{{old('education_table_row_1')[1]}}" autocomplete="off">
+                                    <input name="education_table_row_1[]" class="column-input name" value="{{old('education_table_row_1')[1] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="education_table_row_1[]" class="column-input major" value="{{old('education_table_row_1')[2]}}" autocomplete="off">
+                                    <input name="education_table_row_1[]" class="column-input major" value="{{old('education_table_row_1')[2] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="education_table_row_1[]" class="column-input degree" value="{{old('education_table_row_1')[3]}}" autocomplete="off">
+                                    <input name="education_table_row_1[]" class="column-input degree" value="{{old('education_table_row_1')[3] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="education_table_row_1[]" class="column-input year" value="{{old('education_table_row_1')[4]}}" autocomplete="off">
+                                    <input name="education_table_row_1[]" class="column-input year" value="{{old('education_table_row_1')[4] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column text-center">
                                     <input type="checkbox" name="education_table_row_1[]" class="select-one-row-checkbox" value="1">
@@ -555,13 +555,13 @@ if( !in_array(auth()->user()->role_id, [1,3]) ){
                                     <input name="language_table_row_1[]" class="column-input row-no" autocomplete="off" value="1" readonly>
                                 </td>
                                 <td class="data-column">
-                                    <input name="language_table_row_1[]" class="column-input language-name" value="{{old('language_table_row_1')[1]}}" autocomplete="off">
+                                    <input name="language_table_row_1[]" class="column-input language-name" value="{{old('language_table_row_1')[1] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="language_table_row_1[]" class="column-input proficiency-speaking" value="{{old('language_table_row_1')[2]}}" autocomplete="off">
+                                    <input name="language_table_row_1[]" class="column-input proficiency-speaking" value="{{old('language_table_row_1')[2] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="language_table_row_1[]" class="column-input proficiency-writing" value="{{old('language_table_row_1')[3]}}" autocomplete="off">
+                                    <input name="language_table_row_1[]" class="column-input proficiency-writing" value="{{old('language_table_row_1')[3] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column text-center">
                                     <input type="checkbox" name="language_table_row_1[]" class="select-one-row-checkbox" value="1">
@@ -706,19 +706,19 @@ if( !in_array(auth()->user()->role_id, [1,3]) ){
                                     <input name="employment_history_table_row_1[]" class="column-input row-no" autocomplete="off" value="1" readonly>
                                 </td>
                                 <td class="data-column">
-                                    <input name="employment_history_table_row_1[]" class="column-input company-name" value="{{old('employment_history_table_row_1')[1]}}" autocomplete="off">
+                                    <input name="employment_history_table_row_1[]" class="column-input company-name" value="{{old('employment_history_table_row_1')[1] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="employment_history_table_row_1[]" class="column-input position" value="{{old('employment_history_table_row_1')[2]}}" autocomplete="off">
+                                    <input name="employment_history_table_row_1[]" class="column-input position" value="{{old('employment_history_table_row_1')[2] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="employment_history_table_row_1[]" class="column-input from" value="{{old('employment_history_table_row_1')[3]}}" autocomplete="off">
+                                    <input name="employment_history_table_row_1[]" class="column-input from" value="{{old('employment_history_table_row_1')[3] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="employment_history_table_row_1[]" class="column-input to" value="{{old('employment_history_table_row_1')[4]}}" autocomplete="off">
+                                    <input name="employment_history_table_row_1[]" class="column-input to" value="{{old('employment_history_table_row_1')[4] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="employment_history_table_row_1[]" class="column-input amount" value="{{old('employment_history_table_row_1')[5]}}" autocomplete="off">
+                                    <input name="employment_history_table_row_1[]" class="column-input amount" value="{{old('employment_history_table_row_1')[5] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column text-center">
                                     <input type="checkbox" name="employment_history_table_row_1[]" class="select-one-row-checkbox" value="1">
@@ -887,22 +887,22 @@ if( !in_array(auth()->user()->role_id, [1,3]) ){
                                     <input name="consultant_service_table_row_1[]" class="column-input row-no" autocomplete="off" value="1" readonly>
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input service-performed" value="{{old('consultant_service_table_row_1')[1]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input service-performed" value="{{old('consultant_service_table_row_1')[1] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input company-name" value="{{old('consultant_service_table_row_1')[2]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input company-name" value="{{old('consultant_service_table_row_1')[2] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input from" value="{{old('consultant_service_table_row_1')[3]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input from" value="{{old('consultant_service_table_row_1')[3] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input to" value="{{old('consultant_service_table_row_1')[4]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input to" value="{{old('consultant_service_table_row_1')[4] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input daily-rate" value="{{old('consultant_service_table_row_1')[5]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input daily-rate" value="{{old('consultant_service_table_row_1')[5] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column">
-                                    <input name="consultant_service_table_row_1[]" class="column-input days-at-rate" value="{{old('consultant_service_table_row_1')[6]}}" autocomplete="off">
+                                    <input name="consultant_service_table_row_1[]" class="column-input days-at-rate" value="{{old('consultant_service_table_row_1')[6] ?? ''}}" autocomplete="off">
                                 </td>
                                 <td class="data-column text-center">
                                     <input type="checkbox" name="consultant_service_table_row_1[]" class="select-one-row-checkbox" value="1">

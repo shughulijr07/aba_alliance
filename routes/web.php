@@ -173,7 +173,7 @@ Route::post('/return_timesheet',[TimeSheetsController::class,'returnTimeSheet'])
 Route::post('/change_timesheet_spv',[TimeSheetsController::class,'changeSupervisor']);
 Route::post('/reject_timesheet',[TimeSheetsController::class,'rejectTimeSheet']);
 Route::get('/time_sheet_statement/{id}',[TimeSheetsController::class,'showTimeSheetStatement']);
-Route::resource('time_sheet_late_submissions',TimeSheetLateSubmissionsController::class);
+Route::resource('time_sheet_late_submissions','TimeSheetLateSubmissionsController');
 Route::get('/unlock_time_sheet_submission/{id} ',[TimeSheetLateSubmissionsController::class, 'unlockTimeSheetSubmission']);
 Route::get('/time_sheet_reports',[TimeSheetReportsController::class,'index']);
 Route::post('/generate_time_sheet_report',[TimeSheetReportsController::class,'generateReport']);
@@ -195,10 +195,10 @@ Route::post('/gl_accounts/ajaxDelete/', [GlAccountsController::class, 'ajaxDelet
 Route::get('/activities/import_from_excel', [ActivitiesController::class, 'importFromExcel']);
 Route::get('/gl_accounts/import_from_excel', [GlAccountsController::class, 'importFromExcel']);
 
-Route::resource('projects',ProjectsController::class);
-Route::resource('activities',ActivitiesController::class);
-Route::resource('active_projects',ActiveProjectsController::class);
-Route::resource('gl_accounts',GlAccountsController::class);
+Route::resource('projects','ProjectsController');
+Route::resource('activities','ActivitiesController');
+Route::resource('active_projects','ActiveProjectsController');
+Route::resource('gl_accounts','GlAccountsController');
 
 
 /************ TRAVEL MANAGEMENT ROUTES *************************/
@@ -363,21 +363,21 @@ Route::get('/staff/import_from_excel', [StaffController::class, 'importFromExcel
 
 
 /************************** RESOURCE ROUTES ****************************/
-Route::resource('departments',DepartmentsController::class);
-Route::resource('countries',CountriesController::class);
-Route::resource('districts',DistrictsController::class);
-Route::resource('regions',RegionsController::class);
-Route::resource('staff',StaffController::class);
-Route::resource('staff_dependents',StaffDependentsController::class);
-Route::resource('staff_emergency_contacts',StaffEmergencyContactsController::class);
-Route::resource('staff_biographical_data_sheets',StaffBiographicalDataSheetsController::class);
-Route::resource('staff_job_titles',StaffsJobTitlesController::class);
-Route::resource('system_roles',SystemRolesController::class);
-Route::resource('permissions',PermissionsController::class);
-Route::resource('wards',WardsController::class);
-Route::resource('system_users', SystemUsersController::class);
-Route::resource('numbered_items', NumberedItemsController::class);
-Route::resource('number_series', NumberSeriesController::class);
+Route::resource('departments','DepartmentsController');
+Route::resource('countries','CountriesController');
+Route::resource('districts','DistrictsController');
+Route::resource('regions','RegionsController');
+Route::resource('staff','StaffController');
+Route::resource('staff_dependents','StaffDependentsController');
+Route::resource('staff_emergency_contacts','StaffEmergencyContactsController');
+Route::resource('staff_biographical_data_sheets','StaffBiographicalDataSheetsController');
+Route::resource('staff_job_titles','StaffsJobTitlesController');
+Route::resource('system_roles','SystemRolesController');
+Route::resource('permissions','PermissionsController');
+Route::resource('wards','WardsController');
+Route::resource('system_users', 'SystemUsersController');
+Route::resource('numbered_items', 'NumberedItemsController');
+Route::resource('number_series', 'NumberSeriesController');
 
 
 
