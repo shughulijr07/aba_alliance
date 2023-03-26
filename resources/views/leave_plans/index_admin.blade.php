@@ -38,7 +38,7 @@
 
                 <?php $n = 1; ?>
                 @foreach($leave_plans as $leave_plan)
-                    <?php $supervisor = \App\Staff::find($leave_plan->responsible_spv); ?>
+                    <?php $supervisor = \App\Models\Staff::find($leave_plan->responsible_spv); ?>
                     <tr class='clickable-row' data-href="/leave_plan_admin/{{ $leave_plan->id }}">
                         <td>{{ $n }}</td>
                         <td>{{ ucwords($leave_plan->staff->first_name.' '.$leave_plan->staff->last_name) }}</td>

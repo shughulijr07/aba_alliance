@@ -136,7 +136,6 @@ Route::resource('leave_types', 'LeaveTypesController');
 
 //LeavesPlan Routes
 Route::resource('leave_plans', 'LeavePlansController');
-
 Route::get('/leave_plan_remove_line/{line_id}',[LeavePlansController::class,'removeLine']);
 Route::get('/leave_plan_submit/{leave_plan_id}',[LeavePlansController::class,'submitLeavePlan']);
 Route::get('/leave_plan_admin/{id}',[LeavePlansController::class,'showAdmin']);
