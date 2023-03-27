@@ -83,7 +83,7 @@ Route::get('/email', function(){
 
     $recipient_type = 'staff';
     $recipient = $staff;
-    Mail::to('susumashoma@gmail.com')->send(new PasswordReset($recipient_type,$recipient));
+    Mail::to('abdumalikiandrew@gmail.com')->send(new PasswordReset($recipient_type,$recipient));
 
 });
 
