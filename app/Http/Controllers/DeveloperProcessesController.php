@@ -148,9 +148,6 @@ class DeveloperProcessesController extends Controller
 /**/
 
         DB::statement("SET foreign_key_checks=1");
-
-        dd("finished");
-
         return redirect()->back();
     }
 
