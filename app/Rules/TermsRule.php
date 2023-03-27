@@ -2,7 +2,7 @@
 
 namespace App\Rules;
 
-use App\CompanyInformation;
+use App\Models\CompanyInformation;
 use Illuminate\Contracts\Validation\Rule;
 
 class TermsRule implements Rule
