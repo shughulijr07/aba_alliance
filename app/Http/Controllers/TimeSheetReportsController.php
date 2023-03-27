@@ -13,13 +13,11 @@ use App\Models\TimeSheetType;
 use App\Models\MyFunctions;
 use App\Models\Staff;
 use Illuminate\Http\Request;
-use Gate;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 
 class TimeSheetReportsController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -183,11 +181,11 @@ class TimeSheetReportsController extends Controller
 
 
         //dd($overview);
-
+        
         return view('time_sheet_reports.overview_report',
             compact('report_title','overview','staff_name','year','month','generated_by',
                 'year_filter', 'month_filter',  'employee_filter',
-                'time_sheet_statuses','time_sheet_types','generation_date'));
+                'time_sheet_statuses','generation_date'));
 
 
     }
@@ -1277,8 +1275,6 @@ class TimeSheetReportsController extends Controller
         return $lines_array;
 
     }
-
-
 
     public function generate_projects_hrs_ratio_report($staff_id,$year,$month){
 
