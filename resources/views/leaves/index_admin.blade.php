@@ -38,7 +38,7 @@
                 <tbody>
 
                 @foreach($leaves as $leave)
-                <?php $supervisor = \App\Staff::find($leave->responsible_spv); ?>
+                <?php $supervisor = \App\Models\Staff::find($leave->responsible_spv); ?>
                 <tr class='clickable-row' data-href="/leave_admin/{{ $leave->id }}">
                     <td>{{ $leave->id }}</td>
                     <td>{{ ucwords(strtolower($leave->staff->first_name.' '.$leave->staff->last_name))}}</td>
