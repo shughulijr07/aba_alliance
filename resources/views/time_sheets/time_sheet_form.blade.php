@@ -518,10 +518,6 @@
         var total_hrs_for_each_project = $(".total-one-project");
         var total_hrs_for_all_projects = $("#total_project_hrs").text();
 
-
-        //<td class="no-wrap hrs--project--{{$project_number}}">0</td>
-        //<td class="no-wrap " id="percentage--project--{{$project_number}}">0.0</td>
-
         total_hrs_for_each_project.each(function(){
             var total_hrs_for_one_project = $(this).text();
             var project_id = $(this).attr('id');

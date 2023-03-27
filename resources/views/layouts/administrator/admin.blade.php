@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>A.U.TECH</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/main.js') }}"></script>

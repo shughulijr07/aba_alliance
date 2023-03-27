@@ -1,6 +1,5 @@
 <ul class="vertical-nav-menu">
 
-
     <!-- Dashboard Menu -->
     @can('view-menu','dashboard_menu')
         <li class="app-sidebar__heading menu-title invisible">Dashboard</li>
@@ -255,7 +254,7 @@
 
 
     <!-- Time-sheet Management Menu-->
-    {{-- @can('view-menu','time_sheet_menu')
+    @can('view-menu','time_sheet_menu')
         <li class="app-sidebar__heading menu-title" id="timesheet-menu-title">Time sheets</li>
         <div class="menu-content" id="timesheet-menu-content">
             @can('view-menu','my_time_sheets_menu_item')
@@ -402,12 +401,12 @@
             @endcan
 
         </div>
-    @endcan --}}
+    @endcan
     <!-- Time-sheet Management Menu -->
 
 
     <!-- Travel Management Menu -->
-    @can('view-menu','travel_menu')
+    {{-- @can('view-menu','travel_menu')
         <li class="app-sidebar__heading menu-title" id="travel-menu-title">Travel Authorization</li>
         <div class="menu-content" id="travel-menu-content">
             @can('view-menu','my_travel_requests_menu_item')
@@ -544,11 +543,11 @@
             @endcan
         </div>
 
-    @endcan
+    @endcan --}}
     <!-- Travel Menu -->
 
     <!-- Requisition Menu -->
-    {{-- @can('view-menu','travel_menu')
+    @can('view-menu','travel_menu')
         <li class="app-sidebar__heading menu-title" id="requisition-menu-title">Requisition</li>
         <div class="menu-content" id="requisition-menu-content">
             @can('view-menu','my_travel_requests_menu_item')
@@ -685,7 +684,7 @@
             @endcan
         </div>
 
-    @endcan --}}
+    @endcan
     <!-- Requisition Menu -->
 
     <!-- Advance Payment Menu -->
@@ -829,7 +828,7 @@
     @endcan --}}
 <!-- Requisition Menu -->
 
-<!-- Requisition Menu -->
+{{-- <!-- Requisition Menu -->
 @can('view-menu','travel_menu')
         <li class="app-sidebar__heading menu-title" id="retirement-menu-title">Retirement</li>
         <div class="menu-content" id="retirement-menu-content">
@@ -968,7 +967,7 @@
         </div>
 
     @endcan
-<!-- Requisition Menu -->
+<!-- Requisition Menu --> --}}
 
 
 

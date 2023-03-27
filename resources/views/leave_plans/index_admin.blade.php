@@ -10,7 +10,7 @@
                     <i class="fas fa-list-ul"></i>
                 </div>
                 <div>
-                    <div class="text-primary">Leave Plans Which Are <span class="orange-text">{{$leave_plan_statuses[$leave_plan_status]}}</span></div>
+                    <div class="text-primary">Leave Plans Which Are <span class="orange-text">{{$leave_plan_statuses[$leave_plan_status] ?? ''}}</span></div>
                     <div class="page-title-subheading">
                         Below is a list of leave plans. Click on the button <strong><span class="text-danger">View</span></strong> to see more information of the leave plan.
                     </div>
