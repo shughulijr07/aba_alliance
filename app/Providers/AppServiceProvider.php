@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\AdvancePaymentRequest;
+use App\Models\AdvancePaymentRequest;
 use App\Http\Controllers\LeavesController;
 use App\Models\AdvancePaymentRequest as ModelsAdvancePaymentRequest;
 use App\Models\Leave;

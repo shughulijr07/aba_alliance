@@ -2,9 +2,9 @@
 
 namespace App\Listners\BC130;
 
-use App\BC130;
+use App\Models\BC130;
 use App\Events\SendTimeSheetToBC130;
-use App\TimeSheet;
+use App\Models\TimeSheet;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

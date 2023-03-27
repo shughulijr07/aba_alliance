@@ -4,8 +4,8 @@ namespace App\Listners\Requests;
 
 use App\Events\RequestActivityEvent;
 use App\Mail\RequestActivityMail;
-use App\Staff;
-use App\User;
+use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;

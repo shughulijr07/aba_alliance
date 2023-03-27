@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\SystemRolePermission;
+use App\Models\SystemRolePermission;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;

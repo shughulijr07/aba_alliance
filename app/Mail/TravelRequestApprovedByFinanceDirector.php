@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\TravelRequest;
+use App\Models\TravelRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

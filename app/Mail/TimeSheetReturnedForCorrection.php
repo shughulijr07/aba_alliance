@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\TimeSheet;
+use App\Models\TimeSheet;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

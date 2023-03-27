@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\LeavePlan;
+use App\Models\LeavePlan;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

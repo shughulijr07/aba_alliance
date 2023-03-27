@@ -4,8 +4,8 @@ namespace App\Listners\TravelRequests;
 
 use App\Events\TravelRequestReturnedEvent;
 use App\Mail\TravelRequestReturnedForCorrection;
-use App\Staff;
-use App\User;
+use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;

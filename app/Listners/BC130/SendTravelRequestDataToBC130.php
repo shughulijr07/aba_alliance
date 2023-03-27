@@ -2,9 +2,9 @@
 
 namespace App\Listners\BC130;
 
-use App\BC130;
+use App\Models\BC130;
 use App\Events\SendTravelRequestToBC130;
-use App\TravelRequest;
+use App\Models\TravelRequest;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
