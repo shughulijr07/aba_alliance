@@ -368,7 +368,7 @@
                         <tr>
                             <td>{{ $plan->id }}</td>
                             <td>{{ $leave_types[$plan->type_of_leave]['name']}}</td>
-                            <td>{{ \App\MyFunctions::calculate_no_of_days_btn_dates($plan->starting_date,$plan->ending_date) }}</td>
+                            <td>{{ \App\Models\MyFunctions::calculate_no_of_days_btn_dates($plan->starting_date,$plan->ending_date) }}</td>
                             <td>{{ date('d-m-Y', strtotime($plan->starting_date)) }}</td>
                             <td>{{ date('d-m-Y', strtotime($plan->ending_date))  }}</td>
                             <td>
