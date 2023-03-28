@@ -37,7 +37,7 @@
 
                 <?php $n = 1; ?>
                 @foreach($travel_requests as $travel_request)
-                    <?php $supervisor = \App\Staff::find($travel_request->responsible_spv); ?>
+                    <?php $supervisor = \App\Models\Staff::find($travel_request->responsible_spv); ?>
                     <tr class='clickable-row' data-href="/retirement_requests_admin/{{ $travel_request->id }}">
                         <td>{{ $n }}</td>
                         <td>{{ ucwords($travel_request->staff->first_name.' '.$travel_request->staff->last_name) }}</td>

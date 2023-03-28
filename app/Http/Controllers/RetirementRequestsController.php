@@ -472,12 +472,12 @@ class RetirementRequestsController extends Controller
         //dd($travel_request_lines);
         $travel_request = RetirementRequest::find($id);
 
-       // $lines = [];
+    //    $lines = [];
 
-        // if( count($travel_request->lines)>0 ){
-        //     $lines = ($travel_request->lines->last())->data;
-        //     $lines = json_decode($lines,true);
-        // }
+    //     if( count($travel_request->lines)>0 ){
+    //         $lines = ($travel_request->lines->last())->data;
+    //         $lines = json_decode($lines,true);
+    //     }
 
 
         $supervisors =  Staff::get_supervisors('2');
@@ -487,10 +487,10 @@ class RetirementRequestsController extends Controller
         $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
 
 
-        //$project = new Project();
-        // $projects = $project->process_active_projects_for_a_month($travel_request->year, date('m',strtotime($travel_request->departure_date)));
+        $project = new Project();
+        $projects = $project->process_active_projects_for_a_month($travel_request->year, date('m',strtotime($travel_request->departure_date)));
         $employee_name = ucwords($travel_request->staff->first_name.' '.$travel_request->staff->last_name);
-        //$terms = json_decode($travel_request->terms,true);
+        $terms = json_decode($travel_request->terms,true);
 
         // $travel_requests_summary = $travel_request->get_travel_summary_for_staff($travel_request->staff->id,$travel_request->year);
         $travel_requests_summary = false;
@@ -506,7 +506,7 @@ class RetirementRequestsController extends Controller
 
         return view('retirement_requests.show_admin',
             compact( 'travel_request','supervisors', 'responsible_spv', 'spv_name', 'employee_name',
-                'lines','travel_request_statuses', 'supervisors_mode','projects','terms','travel_requests_summary',
+                'travel_request_statuses', 'supervisors_mode','projects','terms','travel_requests_summary',
                 'rejection_reason','travel_request_modification_reason','comments','user_role','view_type2',
                 'model_name', 'controller_name', 'view_type', 'current_logged_staff'));
     }

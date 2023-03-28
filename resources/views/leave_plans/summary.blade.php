@@ -55,7 +55,7 @@
                         <td>{{ ucwords($line->leave_plan->staff->first_name.' '.$line->leave_plan->staff->last_name) }}</td>
                         <td>{{ $line->leave_plan->staff->department->name }}</td>
                         <td>{{ $leave_types[$line->type_of_leave]['name'] }}</td>
-                        <td>{{ \App\MyFunctions::calculate_no_of_days_btn_dates($line->starting_date,$line->ending_date) }}</td>
+                        <td>{{ \App\Models\MyFunctions::calculate_no_of_days_btn_dates($line->starting_date,$line->ending_date) }}</td>
                         <td>{{ date('d-m-Y', strtotime($line->starting_date)) }}</td>
                         <td>{{ date('d-m-Y', strtotime($line->ending_date))  }}</td>
                         <td>{{ $line->status}}</td>
