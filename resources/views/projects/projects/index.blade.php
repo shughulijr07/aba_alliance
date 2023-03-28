@@ -92,9 +92,9 @@
                   <tbody>
                       <tr>
                         <td>1</td>
-                        <td>101</td>
-                        <td>Project X</td>
-                        <td>Actions</td>
+                        <td>Hard Coded</td>
+                        <td>Hard coded</td>
+                        <td>Hard Coded</td>
                     </tr>
                   </tbody>
                 </table>

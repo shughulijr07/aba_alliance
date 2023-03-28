@@ -85,6 +85,16 @@
                         <th>Action</th>
                     </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Hard Coded</td>
+                            <td>Hard Coded</td>
+                            <td>Hard Coded</td>
+                            <td>Hard Coded</td>
+                            <td>Hard Coded</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
