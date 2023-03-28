@@ -102,6 +102,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                                
                             @foreach($projects as $project_number=>$project_name)
                                 <tr>
                                     <td class="no-wrap ctitle">{{$project_name}}</td>

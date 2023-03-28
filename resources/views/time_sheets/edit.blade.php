@@ -87,133 +87,133 @@
                                     </li>
                                 </ul>
 
-                                <div class="tab-content" style="padding-bottom: 30px;">
-                                    <!-- message content starts here -->
-                                    <div class="tab-pane show active" id="tab-animated-0" role="tabpanel">
-                                        <div class="">
-                                            <div class="">
-                                                <div class="p-3">
-                                                    <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                                                        <div class="vertical-timeline-item vertical-timeline-element">
-                                                            <div>
-                                                                @if($time_sheet->status == '0')
-                                                                    <span class="vertical-timeline-element-icon bounce-in">
-                                                                            <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                                                                        </span>
-                                                                    <div class="vertical-timeline-element-content bounce-in">
-                                                                        <h4 class="timeline-title text-danger">TIME SHEET RETURNED FOR CORRECTIONS</h4>
-                                                                        <p>
-                                                                            Hello, your time sheet have been returned for corrections by
-                                                                            @if($time_sheet->returns->last()->level == 'spv') Supervisor
-                                                                            @elseif($time_sheet->returns->last()->level == 'hrm') Human Resource Manager
-                                                                            @elseif($time_sheet->returns->last()->level == 'md')  Managing Director
-                                                                            @else Administrator
-                                                                            @endif
-                                                                            .<br><br>
-                                                                            - <span class="text-danger">Reason & Correction Instruction</span> <br>
-                                                                            <span class="ml-2">{{$time_sheet->returns->last()->comments}}</span> <br><br>
-                                                                            - <span class="text-danger">Time of Returning</span> <br>
-                                                                            <span class="ml-2">{{date("d-m-Y H:i:s", strtotime($time_sheet->updated_at))}}</span>
-                                                                        </p>
+        <div class="tab-content" style="padding-bottom: 30px;">
+            <!-- message content starts here -->
+            <div class="tab-pane show active" id="tab-animated-0" role="tabpanel">
+                <div class="">
+                    <div class="">
+                        <div class="p-3">
+                            <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                                <div class="vertical-timeline-item vertical-timeline-element">
+                                    <div>
+                                        @if($time_sheet->status == '0')
+                                            <span class="vertical-timeline-element-icon bounce-in">
+                                                    <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                                                </span>
+                                            <div class="vertical-timeline-element-content bounce-in">
+                                                <h4 class="timeline-title text-danger">TIME SHEET RETURNED FOR CORRECTIONS</h4>
+                                                <p>
+                                                    Hello, your time sheet have been returned for corrections by
+                                                    @if($time_sheet->returns->last()->level == 'spv') Supervisor
+                                                    @elseif($time_sheet->returns->last()->level == 'hrm') Human Resource Manager
+                                                    @elseif($time_sheet->returns->last()->level == 'md')  Managing Director
+                                                    @else Administrator
+                                                    @endif
+                                                    .<br><br>
+                                                    - <span class="text-danger">Reason & Correction Instruction</span> <br>
+                                                    <span class="ml-2">{{$time_sheet->returns->last()->comments}}</span> <br><br>
+                                                    - <span class="text-danger">Time of Returning</span> <br>
+                                                    <span class="ml-2">{{date("d-m-Y H:i:s", strtotime($time_sheet->updated_at))}}</span>
+                                                </p>
 
-                                                                        <p>
-                                                                            <br>
-                                                                            - <span class="text-danger">For Assistance  </span><br>
-                                                                            <span class="ml-2">
-                                                                                    Please contact System Administrator or Human Resource Manager
-                                                                                </span>
-                                                                        </p>
-                                                                    </div>
-                                                                @endif
-                                                                @if($time_sheet->status == '10')
-                                                                    <span class="vertical-timeline-element-icon bounce-in">
-                                                                            <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                                                                        </span>
-                                                                    <div class="vertical-timeline-element-content bounce-in">
-                                                                        <h4 class="timeline-title text-danger">TIME SHEET STILL IN DRAFTS</h4>
-                                                                        <p>
-                                                                            This Time Sheet is not yet submitted, it is still saved in Drafts.<br><br>
-                                                                            - <span class="text-danger">Last changes were made on  </span><br>
-                                                                            <span class="ml-2">
-                                                                                    {{date("d-m-Y H:i:s", strtotime($time_sheet->updated_at))}}
-                                                                                </span>
-                                                                        </p>
-
-                                                                        <p>
-                                                                            <br>
-                                                                            - <span class="text-danger">For Assistance  </span><br>
-                                                                            <span class="ml-2">
-                                                                                    Please contact System Administrator or Human Resource Manager
-                                                                                </span>
-                                                                        </p>
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- message content ends here -->
-
-                                    <!-- summary content starts here -->
-                                    <div class="tab-pane show" id="tab-animated-2" role="tabpanel">
-                                        <div class="">
-                                            <div class="">
-                                                <div class="p-3">
-                                                    <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                                                        <div class="vertical-timeline-item vertical-timeline-element invisible">
-                                                            <div>
-                                                        <span class="vertical-timeline-element-icon bounce-in">
-                                                            <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                                                <p>
+                                                    <br>
+                                                    - <span class="text-danger">For Assistance  </span><br>
+                                                    <span class="ml-2">
+                                                            Please contact System Administrator or Human Resource Manager
                                                         </span>
-                                                                <div class="vertical-timeline-element-content bounce-in">
-                                                                    <h4 class="timeline-title text-danger">TIME SHEET SUMMARY</h4>
-                                                                    <p>
-                                                                        <br>
-                                                                        <span class="text-danger">For Assistance</span><br>
-                                                                        - Please contact system Administrator or Human Resource Manager
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="vertical-timeline-item vertical-timeline-element">
-                                                            <div>
-                                                        <span class="vertical-timeline-element-icon bounce-in">
-                                                            <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
-                                                        </span>
-                                                                <div class="vertical-timeline-element-content bounce-in">
-                                                                    <h4 class="timeline-title text-danger">LOE For Projects</h4>
-                                                                    <table class="table table-sm table-bordered">
-                                                                        <thead>
-                                                                        <tr class="bg-primary text-white">
-                                                                            <th class="">Project</th>
-                                                                            <th class="text-right">Hrs</th>
-                                                                            <th class="text-right"> % </th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <?php $n = 1; ?>
-                                                                        @foreach($projects as $project_number=>$project_name)
-                                                                            <tr>
-                                                                                <td >{{$project_name}}</td>
-                                                                                <td class="no-wrap text-right" id="hrs--project--{{$project_number}}">0</td>
-                                                                                <td class="no-wrap text-right text-danger" id="percentage--project--{{$project_number}}">0.0</td>
-                                                                            </tr>
-                                                                        @endforeach
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </p>
                                             </div>
-                                        </div>
+                                        @endif
+                                        @if($time_sheet->status == '10')
+                                            <span class="vertical-timeline-element-icon bounce-in">
+                                                    <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                                                </span>
+                                            <div class="vertical-timeline-element-content bounce-in">
+                                                <h4 class="timeline-title text-danger">TIME SHEET STILL IN DRAFTS</h4>
+                                                <p>
+                                                    This Time Sheet is not yet submitted, it is still saved in Drafts.<br><br>
+                                                    - <span class="text-danger">Last changes were made on  </span><br>
+                                                    <span class="ml-2">
+                                                            {{date("d-m-Y H:i:s", strtotime($time_sheet->updated_at))}}
+                                                        </span>
+                                                </p>
+
+                                                <p>
+                                                    <br>
+                                                    - <span class="text-danger">For Assistance  </span><br>
+                                                    <span class="ml-2">
+                                                            Please contact System Administrator or Human Resource Manager
+                                                        </span>
+                                                </p>
+                                            </div>
+                                        @endif
                                     </div>
-                                    <!-- summary content ends here -->
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- message content ends here -->
+
+            <!-- summary content starts here -->
+            <div class="tab-pane show" id="tab-animated-2" role="tabpanel">
+                <div class="">
+                    <div class="">
+                        <div class="p-3">
+                            <div class="vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                                <div class="vertical-timeline-item vertical-timeline-element invisible">
+                                    <div>
+                                <span class="vertical-timeline-element-icon bounce-in">
+                                    <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                                </span>
+                                        <div class="vertical-timeline-element-content bounce-in">
+                                            <h4 class="timeline-title text-danger">TIME SHEET SUMMARY</h4>
+                                            <p>
+                                                <br>
+                                                <span class="text-danger">For Assistance</span><br>
+                                                - Please contact system Administrator or Human Resource Manager
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vertical-timeline-item vertical-timeline-element">
+                                    <div>
+                                <span class="vertical-timeline-element-icon bounce-in">
+                                    <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
+                                </span>
+                                        <div class="vertical-timeline-element-content bounce-in">
+                                            <h4 class="timeline-title text-danger">LOE For Projects</h4>
+                                            <table class="table table-sm table-bordered">
+                                                <thead>
+                                                <tr class="bg-primary text-white">
+                                                    <th class="">Project</th>
+                                                    <th class="text-right">Hrs</th>
+                                                    <th class="text-right"> % </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <?php $n = 1; ?>
+                                                @foreach($projects as $project_number=>$project_name)
+                                                    <tr>
+                                                        <td >{{$project_name}}</td>
+                                                        <td class="no-wrap text-right" id="hrs--project--{{$project_number}}">0</td>
+                                                        <td class="no-wrap text-right text-danger" id="percentage--project--{{$project_number}}">0.0</td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- summary content ends here -->
+        </div>
                             </div>
                         </div>
                     </div>

@@ -1013,6 +1013,7 @@ class TimeSheetsController extends Controller
         $project = new Project();
         $projects = $project->process_active_projects_for_a_month($time_sheet->year, $time_sheet->month);
 
+
         $holidays = Holiday::get_all_holidays_in_a_year($time_sheet->year)['arrays'];
 
         $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
