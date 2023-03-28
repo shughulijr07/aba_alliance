@@ -22,7 +22,7 @@
                 <td >{{$time_sheet->year}}</td>
                 <td >{{$time_sheet->month}}</td>
 
-                <?php  $spv = \App\Staff::find($time_sheet->responsible_spv); ?>
+                <?php  $spv = \App\Models\Staff::find($time_sheet->responsible_spv); ?>
 
                 <td >{{$spv->first_name.' '.$spv->last_name}}</td>
                 <td >{{$time_sheet_statuses[$time_sheet->status]}}</td>

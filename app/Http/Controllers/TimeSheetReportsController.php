@@ -322,9 +322,11 @@ class TimeSheetReportsController extends Controller
         //dd($time_sheets);
 
         return view('time_sheet_reports.submitted_timesheets_report',
-            compact('report_title','time_sheets','staff_name','type_of_time_sheet','year','month','generated_by',
-                'year_filter', 'month_filter', 'from_date_filter','to_date_filter', 'employee_filter', 'time_sheet_type_filter',
-                'time_sheet_statuses','time_sheet_types','generation_date'));
+            compact('report_title','time_sheets','staff_name',
+            // 'type_of_time_sheet', 'from_date_filter','to_date_filter', 'time_sheet_type_filter','time_sheet_types'
+            'year','month','generated_by',
+                'year_filter', 'month_filter', 'employee_filter',
+                'time_sheet_statuses','generation_date'));
 
 
     }
@@ -904,9 +906,11 @@ class TimeSheetReportsController extends Controller
         $time_sheets = $this->get_partially_submitted_timesheets($report_type, $staff_id,$year,$month);
 
         return view('time_sheet_reports.submitted_timesheets_report',
-            compact('report_title','time_sheets', 'staff_name','type_of_time_sheet','year','month','generated_by',
-                'year_filter', 'month_filter', 'from_date_filter','to_date_filter', 'employee_filter', 'time_sheet_type_filter',
-                'time_sheet_statuses','time_sheet_types','generation_date'));
+            compact('report_title','time_sheets', 'staff_name',
+            // 'type_of_time_sheet', 'from_date_filter','to_date_filter', 'time_sheet_type_filter','time_sheet_types',
+            'year','month','generated_by',
+                'year_filter', 'month_filter', 'employee_filter',
+                'time_sheet_statuses','generation_date'));
 
     }
 
