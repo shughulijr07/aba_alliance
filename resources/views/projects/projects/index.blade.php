@@ -89,6 +89,14 @@
                         <th>Actions</th>
                     </tr>
                     </thead>
+                  <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>101</td>
+                        <td>Project X</td>
+                        <td>Actions</td>
+                    </tr>
+                  </tbody>
                 </table>
 
             </div>
