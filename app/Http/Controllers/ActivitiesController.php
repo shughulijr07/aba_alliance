@@ -63,7 +63,6 @@ class ActivitiesController extends Controller
                 'model_name', 'controller_name','view_type'));
     }
 
-
     public function store(Request $request)
     {
         if (Gate::denies('access',['activities','store'])){
