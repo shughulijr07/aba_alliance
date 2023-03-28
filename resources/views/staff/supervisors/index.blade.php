@@ -55,7 +55,7 @@
                                     if($staff->supervisor_id == null || $staff->supervisor_id == ''){
                                         echo '';
                                     }else{
-                                        $supervisor = \App\Staff::find($staff->supervisor_id);
+                                        $supervisor = \App\Models\Staff::find($staff->supervisor_id);
                                         echo ucwords($supervisor->first_name.' '.$supervisor->last_name);
                                     }
                                     ?>
