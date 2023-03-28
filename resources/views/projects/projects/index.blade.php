@@ -89,14 +89,22 @@
                         <th>Actions</th>
                     </tr>
                     </thead>
-                  <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Hard Coded</td>
-                        <td>Hard coded</td>
-                        <td>Hard Coded</td>
-                    </tr>
-                  </tbody>
+                    {{-- Code added by UAT --}}
+                    <tbody>
+                            <?php $n=1;?>
+                            @foreach($all_projects as $project)
+                            <tr class='data-row'>
+                                <td>{{ $n }}</td>
+                                <td>{{ $project->number }}</td>
+                                <td>{{ $project->name }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm" role="button" aria-pressed="true">View</a>
+                                </td>
+                            </tr>
+                            <?php $n++;?>
+                            @endforeach
+                    </tbody>
+                    {{-- End of Code added by UAT --}}
                 </table>
 
             </div>

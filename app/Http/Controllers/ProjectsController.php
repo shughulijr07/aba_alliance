@@ -36,9 +36,10 @@ class ProjectsController extends Controller
         $reportTitle = 'PROJECTS';
         $view_type = 'index';
 
+        $all_projects = Project::all();
         return view('projects.projects.index',
             compact('companyLogoBase64','companyLogoPath',
-                'reportTitle', 'model_name', 'controller_name', 'view_type'));
+                'reportTitle', 'model_name', 'controller_name', 'view_type', 'all_projects'));
     }
 
     /**
