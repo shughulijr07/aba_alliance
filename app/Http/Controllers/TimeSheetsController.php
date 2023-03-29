@@ -1103,8 +1103,6 @@ class TimeSheetsController extends Controller
 
         $time_sheet = TimeSheet::find($time_sheet_id);
 
-
-
         $year = $time_sheet->year; $month =$time_sheet->month;
 
         $months = TimeSheet::$months;

@@ -1093,20 +1093,20 @@
             @can('view-menu','projects_menu')
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon  pe-7s-albums"></i> Clients
+                        <i class="metismenu-icon  pe-7s-albums"></i> Projects
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
                             <a href="{{url('/active_projects')}}">
                                 <i class="metismenu-icon">
-                                </i>Active Clients</span>
+                                </i>Active Projects</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{url('/projects')}}">
                                 <i class="metismenu-icon">
-                                </i>All Clients
+                                </i>All Projects
                             </a>
                         </li>
                         <li>
