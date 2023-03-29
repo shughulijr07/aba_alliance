@@ -11,8 +11,8 @@
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <div>
-                    <div class="text-primary">Project Information</div>
-                    <div class="page-title-subheading">Below is information of project</div>
+                    <div class="text-primary">Client Information</div>
+                    <div class="page-title-subheading">Below is information of a client</div>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-primary border-danger card">
                 <div class="widget-chat-wrapper-outer">
                     <div class="widget-chart-content">
-                        <div class="widget-title opacity-5 text-uppercase">Project Name</div>
+                        <div class="widget-title opacity-5 text-uppercase">Client Name</div>
                         <div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
                             <div class="widget-chart-flex align-items-center">
                                 <div>
@@ -46,7 +46,7 @@
             <div class="widget-chart widget-chart2 text-left mb-3 card-btm-border card-shadow-danger border-primary card">
                 <div class="widget-chat-wrapper-outer">
                     <div class="widget-chart-content">
-                        <div class="widget-title opacity-5 text-uppercase">Project Number</div>
+                        <div class="widget-title opacity-5 text-uppercase">Client Number</div>
                         <div class="widget-numbers mt-2 fsize-4 mb-0 w-100">
                             <div class="widget-chart-flex align-items-center">
                                 <div>

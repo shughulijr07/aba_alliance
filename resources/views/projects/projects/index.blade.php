@@ -10,9 +10,9 @@
                     <i class="fas fa-list-ul"></i>
                 </div>
                 <div>
-                    <div class="text-primary">List Of Projects</div>
+                    <div class="text-primary">List Of Clients</div>
                     <div class="page-title-subheading">
-                        Below is a list of all Projects
+                        Below is a list of all Clients
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
             <div class="card-header-tab card-header">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-bold">
                     <i class="header-icon lnr-users mr-3 text-primary opacity-6"> </i>
-                    <span class="text-primary">Projects</span>
+                    <span class="text-primary">Clients</span>
                 </div>
                 <div class="btn-actions-pane-right actions-icon-btn">
                     <button type="button" class="btn mr-2 mb-2 mt-2 btn-primary" data-toggle="modal" data-target="#filtersModal">
@@ -84,8 +84,8 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Project Code</th>
-                        <th>Project Name</th>
+                        <th>Client Code</th>
+                        <th>Client Name</th>
                         <th>Actions</th>
                     </tr>
                     </thead>

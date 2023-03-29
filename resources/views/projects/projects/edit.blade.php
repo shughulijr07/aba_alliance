@@ -10,9 +10,9 @@
                     <i class="fas fa-edit"></i>
                 </div>
                 <div>
-                    <div class="text-primary">Edit Project</div>
+                    <div class="text-primary">Edit Client</div>
                     <div class="page-title-subheading">
-                        Please complete the form below to update Project
+                        Please complete the form below to update Client
                     </div>
                 </div>
             </div>
@@ -27,11 +27,11 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Project Form</h5>
+                    <h5 class="card-title">Client Form</h5>
                     <form action="/projects/{{$project->id}}" method="POST">
                         @method('PATCH')
                         @include('projects.projects.form')
-                        <button class="mt-2 btn btn-primary">Update Project</button>
+                        <button class="mt-2 btn btn-primary">Update Client</button>
                     </form>
                 </div>
             </div>
