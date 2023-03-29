@@ -97,7 +97,7 @@
                             <th class="no-wrap ctitle" colspan="2" style="border-color: #ffffff !important;"></th>
                         </tr>
                         <tr class="bg-primary text-white">
-                            <th class="no-wrap ctitle">Project Name</th>
+                            <th class="no-wrap ctitle">Client Name</th>
                             <th class="no-wrap">Total Hrs</th>
                         </tr>
                         </thead>
