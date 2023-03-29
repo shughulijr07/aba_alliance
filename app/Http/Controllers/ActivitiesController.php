@@ -38,10 +38,12 @@ class ActivitiesController extends Controller
         $reportTitle = 'ACTIVITIES';
         $view_type = 'index';
 
+        // Added by UAT to take data from db and damp all activities to the index page
+        $activities = Activity::all();
 
         return view('projects.activities.index',
             compact('projects', 'companyLogoBase64','companyLogoPath',
-                'reportTitle', 'model_name', 'controller_name', 'view_type'));
+                'reportTitle', 'model_name', 'controller_name', 'view_type', 'activities'));
     }
 
 

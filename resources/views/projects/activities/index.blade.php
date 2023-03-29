@@ -73,6 +73,7 @@
                     </button>
                 </div>
             </div>
+
             <div class="card-body">
                 <table style="width: 100%;" id="activitiesTable" class="table table-hover table-striped table-bordered">
                     <thead>
@@ -86,14 +87,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Hard Coded</td>
-                            <td>Hard Coded</td>
-                            <td>Hard Coded</td>
-                            <td>Hard Coded</td>
-                            <td>Hard Coded</td>
-                        </tr>
+                        <?php $n=1;?>
+                          @foreach($activities as $activity)
+                            <tr class='clickable-row' data-href="/activities/{{ $activity->id }}">
+                                <td>{{ $n }}</td>
+                                <td>{{ $activity->name }}</td>
+                                <td>{{ $activity->code}}</td>
+                                <td>{{ $activity->project->name}}</td>
+                                <td>{{ $activity->project->number}}</td>
+                                <td>
+                                    <a href="/activities/{{ $activity->id }}" class="btn btn-primary btn-sm" role="button" aria-pressed="true">View</a>
+                                </td>
+                            </tr>
+                         <?php $n++;?>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
