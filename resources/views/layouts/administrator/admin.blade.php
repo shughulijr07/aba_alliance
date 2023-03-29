@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>A.U.TECH</title>
+    <title>U.A.T</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/main.js') }}"></script>

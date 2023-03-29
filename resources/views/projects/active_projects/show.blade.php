@@ -43,6 +43,7 @@
                         </thead>
                         <tbody>
                         <?php $n = 1;?>
+                        {{-- {{dd($all_projects)}} --}}
                         @foreach($all_projects as $project)
                             @if( in_array($project->number,$active_projects) )
                             <tr class="data-row">
