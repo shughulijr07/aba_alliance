@@ -61,64 +61,23 @@
         <div class="card-body">
             <div class="col-auto float-right ml-auto">
                 {{-- <a href="{{ route('timesheet-add-client', ['time_sheet'=>$time_sheet->id]) }}" class="btn btn-primary">Add Client</a> --}}
-                
-            </div>
-            <div class="p-3">
-                @if (count($clientsheets) > 0)
-                <table class="table table-bordered table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th>Clients</th>
-                            <th>Task</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($clientsheets as $clientsheet)
-                           @php
-                              $client = App\Models\Project::find($clientsheet->project_id);
-                           @endphp
-                            <tr>
-                                <td>{{ $client->name }}</td>
-                                <td>
-                                    @foreach (App\Models\Task::where('timesheet_client_id', $client->id)->get() as $task)
-                                        <p>{{$task->task_name}}</p>
-                                    @endforeach
-                                    <button class="btn btn-primary">Add Task</button>
-                                </td>
-                            </tr>
-                         @endforeach
-                       
-                    </tbody>
-                </table>
-                @endif
-              
-                
-            </div>
-            <div class="row " style="">
-                <div class="col-md-4"></div>
-                <div class="col-md-8">
-                    <form action="{{ route('timesheet-add-client') }}" method="post">
+                <button data-toggle="modal" data-target="#add_client" class="btn btn-primary">Add Client</button>
+                <div>
+                    <form action="" method="post">
                         @csrf
                         <input type="hidden" name="time_sheet_id" value="{{ $time_sheet->id }}">
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <select name="client_id" id="" class="form-control" required>
-                                        <option value="">select client</option>
-                                        @foreach ($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->number }} {{ $client->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4"><button class="btn btn-primary">Add Client</button></div>
+                        <div class="form-group">
+                            <label for="">Client</label>
+                            <select name="project_id" id="" class="form-control">
+                                <option value="">select client</option>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->number }} {{ $client->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        
                     </form>
                 </div>
             </div>
-            
         </div>
     </div>
 

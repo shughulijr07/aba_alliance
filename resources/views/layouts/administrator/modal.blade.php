@@ -1,5 +1,5 @@
-<div class="modal fade" tabindex="0" role="dialog" aria-labelledby="modal" aria-hidden="true" id="modal" >
-    <div class="modal-dialog modal-lg" id="modal-dialog" >
+<div class="modal fade" tabindex="0" role="dialog" aria-labelledby="modal" aria-hidden="true" id="modal">
+    <div class="modal-dialog modal-lg" id="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #00838F; color: #ffffff;">
                 <h5 class="modal-title" id="modalTitle">Modal Title</h5>
@@ -16,21 +16,25 @@
 </div>
 
 
-<button type="button" data-toggle="modal" data-target="#modal" id="showModalButton" style="display: none;">View Modal</button>
+<button type="button" data-toggle="modal" data-target="#modal" id="showModalButton" style="display: none;">View
+    Modal</button>
 
 
 <script type="text/javascript">
-
-    function displayModal(){
-        $("#showModalButton").trigger({ type: "click" });
+    function displayModal() {
+        $("#showModalButton").trigger({
+            type: "click"
+        });
     }
 
-    function closeModal(){
+    function closeModal() {
 
-        $("[data-dismiss=modal]").trigger({ type: "click" });
+        $("[data-dismiss=modal]").trigger({
+            type: "click"
+        });
     }
 
-    function clearModalParameters(){
+    function clearModalParameters() {
         //Clear Modal Title
         $("#modalTitle").html("");
 
@@ -47,8 +51,4 @@
         $("#modal-dialog").css("max-width", "");
         //$("#modal-dialog").removeAttr( 'style' );
     }
-
 </script>
-
-
-

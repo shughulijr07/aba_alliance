@@ -19,6 +19,7 @@ use App\Models\Staff;
 use App\Models\TimeSheet;
 use App\Models\TimeSheetApproval;
 use App\Models\TimeSheetChangedSupervisor;
+use App\Models\TimesheetClient;
 use App\Models\TimeSheetLateSubmission;
 use App\Models\TimeSheetLine;
 use App\Models\TimeSheetReject;
@@ -584,15 +585,33 @@ class TimeSheetsController extends Controller
 
     }
 
+    public function timesheet_add_client(Request $request){
+        $data = request()->validate([
+            'time_sheet_id' => 'required',
+            'client_id' => 'required',
+           
+        ]);
+
+        TimesheetClient::create([
+            'time_sheet_id' => $data['time_sheet_id'],
+            'project_id' => $data['client_id'],
+        ]);
+        return redirect()->to('assign_client_task/'.$data['time_sheet_id']);
+    }
+
     public function assign_client_task($id){
+        $clients = Project::all();
         $time_sheet = TimeSheet::find($id);
         if ($time_sheet) {
             $supervisor = Staff::find($time_sheet->responsible_spv);
         $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
         $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
+        $clientsheets = TimesheetClient::where('time_sheet_id', $time_sheet->id)->get();
         return view('time_sheets.assign_client_task')
                  ->with('employee_name', $employee_name)
                  ->with('time_sheet', $time_sheet)
+                 ->with('clients', $clients)
+                 ->with('clientsheets', $clientsheets)
                  ->with('spv_name', $spv_name);
         }
 

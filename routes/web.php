@@ -152,6 +152,7 @@ Route::post('/reject_leave_plan',[LeavePlansController::class,'rejectLeavePlan']
 
 /************ TIME SHEETS MANAGEMENT ROUTES *************************/
 Route::get('/new_time_sheet',[TimeSheetsController::class,'create']);
+Route::post('/timesheet-add-client',[TimeSheetsController::class,'timesheet_add_client'])->name('timesheet-add-client');
 Route::get('/assign_client_task/{id}',[TimeSheetsController::class,'assign_client_task']);
 Route::post('/new_time_sheet',[TimeSheetsController::class,'store']);
 Route::get('/create_timesheet_for_another_staff',[TimeSheetsController::class,'new_createForAnotherStaff']);
@@ -326,9 +327,6 @@ Route::post('/approve_objectives',[PerformanceObjectivesController::class,'appro
 Route::post('/return_objectives',[PerformanceObjectivesController::class,'returnPerformanceObjectives']);
 Route::post('/change_objectives_spv',[PerformanceObjectivesController::class,'changeSupervisor']);
 Route::post('/reject_objectives',[PerformanceObjectivesController::class,'rejectPerformanceObjectives']);
-
-
-
 
 Route::get('/staff_performances',[StaffPerformancesController::class,'index']);
 Route::get('/staff_performances_admin/{year}',[StaffPerformancesController::class,'indexAdmin']);
