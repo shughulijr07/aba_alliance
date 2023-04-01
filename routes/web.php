@@ -152,9 +152,11 @@ Route::post('/reject_leave_plan',[LeavePlansController::class,'rejectLeavePlan']
 
 /************ TIME SHEETS MANAGEMENT ROUTES *************************/
 Route::get('/new_time_sheet',[TimeSheetsController::class,'create']);
+Route::get('/assign_client_task/{id}',[TimeSheetsController::class,'assign_client_task']);
 Route::post('/new_time_sheet',[TimeSheetsController::class,'store']);
-Route::get('/create_timesheet_for_another_staff',[TimeSheetsController::class,'createForAnotherStaff']);
+Route::get('/create_timesheet_for_another_staff',[TimeSheetsController::class,'new_createForAnotherStaff']);
 Route::post('/create_timesheet_for_another_staff',[TimeSheetsController::class,'storeForAnotherStaff']);
+Route::post('/new_create_timesheet_for_another_staff',[TimeSheetsController::class,'new_storeForAnotherStaff']);
 Route::get('/create_time_sheet_entries/{id}',[TimeSheetsController::class,'createTimeSheetLines']);
 Route::post('/create_time_sheet_entries',[TimeSheetsController::class,'storeTimesheetData']);
 Route::get('/create_time_sheet_entries_admin/{id}',[TimeSheetsController::class,'createTimeSheetLinesAdmin']);

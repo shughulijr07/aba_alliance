@@ -190,6 +190,91 @@ class TimeSheetsController extends Controller
 
     }
 
+    public function new_create()
+    {
+        if (Gate::denies('access',['time_sheets','store'])){
+            abort(403, 'Access Denied');
+        }
+
+        //detect late submissions and lock them
+        TimeSheetLateSubmission::lock_late_time_sheet_submissions();
+
+        $current_logged_staff = auth()->user()->staff;
+
+        //get system settings
+        $system_settings = GeneralSetting::find(1);
+        $supervisors_mode = $system_settings->supervisors_mode;
+        $supervisor_id = $current_logged_staff->supervisor_id;
+        //override supervisor settings if no supervisor have been assigned to this staff
+        if($supervisor_id == null || $supervisor_id == ''){ $supervisors_mode = '2'; } //'2' => 'Selection From List'
+
+
+        $timeSheetSupervisors = Staff::get_supervisors($supervisors_mode);
+        $responsible_spv = '';
+        $year = date('Y');
+        $months = TimeSheet::$months;
+        $current_month = date('m');
+        $initial_year = --$year;
+
+        $employee_name = ucwords($current_logged_staff->first_name.' '.$current_logged_staff->last_name);
+
+
+        $model_name = 'time_sheet';
+        $controller_name = 'time_sheets';
+        $view_type = 'create';
+
+        return view('time_sheets.create',
+            compact( 'timeSheetSupervisors', 'responsible_spv', 'employee_name',
+                'supervisors_mode','year','months','current_month','initial_year',
+                'model_name', 'controller_name', 'view_type'));
+
+
+
+    }
+
+
+    public function new_createForAnotherStaff()
+    {
+        if (Gate::denies('access',['time_sheets','store'])){
+            abort(403, 'Access Denied');
+        }
+
+        //detect late submissions and lock them
+        //TimeSheetLateSubmission::lock_late_time_sheet_submissions();
+
+        $current_logged_staff = auth()->user()->staff;
+
+        //get system settings
+        $system_settings = GeneralSetting::find(1);
+        $supervisors_mode = $system_settings->supervisors_mode;
+        $supervisor_id = $current_logged_staff->supervisor_id;
+        //override supervisor settings if no supervisor have been assigned to this staff
+        if($supervisor_id == null || $supervisor_id == ''){ $supervisors_mode = '2'; } //'2' => 'Selection From List'
+
+
+        $timeSheetSupervisors = Staff::get_supervisors('2');
+        $employees = Staff::get_valid_staff_list();
+        $responsible_spv = '';
+        $year = date('Y');
+        $months = TimeSheet::$months;
+        $current_month = date('m');
+        $initial_year = --$year;
+
+        $employee_name = ucwords($current_logged_staff->first_name.' '.$current_logged_staff->last_name);
+
+
+        $model_name = 'time_sheet';
+        $controller_name = 'time_sheets';
+        $view_type = 'create';
+
+        return view('time_sheets.emp-timesheet-task',
+            compact( 'timeSheetSupervisors', 'responsible_spv', 'employee_name', 'employees',
+                'supervisors_mode','year','months','current_month','initial_year',
+                'model_name', 'controller_name', 'view_type'));
+
+
+
+    }
 
     public function createForAnotherStaff()
     {
@@ -499,13 +584,28 @@ class TimeSheetsController extends Controller
 
     }
 
+    public function assign_client_task($id){
+        $time_sheet = TimeSheet::find($id);
+        if ($time_sheet) {
+            $supervisor = Staff::find($time_sheet->responsible_spv);
+        $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
+        $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
+        return view('time_sheets.assign_client_task')
+                 ->with('employee_name', $employee_name)
+                 ->with('time_sheet', $time_sheet)
+                 ->with('spv_name', $spv_name);
+        }
 
-    public function storeForAnotherStaff(Request $request)
+        return redirect()->back();
+        
+    }
+
+    public function new_storeForAnotherStaff(Request $request)
     {
 
         $data = request()->validate([
             'staff_id' => 'required',
-            'responsible_spv' =>  'required',
+            'responsible_spv' =>  'nullable|required',
             'year' =>  'required',
             'month' =>  'required',
         ]);
@@ -514,7 +614,13 @@ class TimeSheetsController extends Controller
 
         //get timesheet header data
         $staff_id = $data['staff_id'];
-        $responsible_spv = $data['responsible_spv'];
+        if (session('role') == 1) {
+            $responsible_spv = $data['responsible_spv'];
+        } else {
+            $responsible_spv = auth()->user()->staff->supervisor_id;
+        }
+        
+        
         $year = $data['year'];
         $month = $data['month'];
         $months = TimeSheet::$months;
@@ -522,10 +628,62 @@ class TimeSheetsController extends Controller
 
         //check if timesheet for this date have been submitted before
         $time_sheet = TimeSheet::get_timesheet_by_date($staff_id, $year,$month);
-//        dump($staff_id);
-//        dump($time_sheet);
-//        dump($responsible_spv);
-//        dd($month);
+
+
+        if($time_sheet == null){
+
+            //save time sheet (time sheet header)
+            $time_sheet  = new TimeSheet();
+            $time_sheet->staff_id = $staff_id;
+            $time_sheet->year = $year;
+            $time_sheet->month = $month;
+            $time_sheet->responsible_spv = $responsible_spv;
+            $time_sheet->status = '20'; //it goes to spv direct as submitted because it was not created by staff directly
+            $time_sheet->transferred_to_nav = 'no';
+            $time_sheet->save();
+
+            return redirect('assign_client_task/'.$time_sheet->id);
+
+        }else{
+            $message = 'You Have Already Created Time Sheet for the month of '.$months[$month];
+
+            return redirect('create_timesheet_for_another_staff')->with('message', $message);
+
+        }
+
+
+
+    }
+
+    public function storeForAnotherStaff(Request $request)
+    {
+
+        $data = request()->validate([
+            'staff_id' => 'required',
+            'responsible_spv' =>  'nullable|required',
+            'year' =>  'required',
+            'month' =>  'required',
+        ]);
+
+
+
+        //get timesheet header data
+        $staff_id = $data['staff_id'];
+        if (session('role') == 1) {
+            $responsible_spv = $data['responsible_spv'];
+        } else {
+            $responsible_spv = auth()->user()->staff->supervisor_id;
+        }
+        
+        
+        $year = $data['year'];
+        $month = $data['month'];
+        $months = TimeSheet::$months;
+
+
+        //check if timesheet for this date have been submitted before
+        $time_sheet = TimeSheet::get_timesheet_by_date($staff_id, $year,$month);
+
 
         if($time_sheet == null){
 

@@ -31,7 +31,7 @@ class LoginController extends Controller
         $role_id = Auth::user()->role_id;
         $user_status = Auth::user()->status;
         $staff = Auth::user()->staff;
-
+        session(['role' => $role_id]);
 
         if( isset($staff->id) && $staff->staff_status == 'Active' && $user_status == 'active' ){
 

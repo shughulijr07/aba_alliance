@@ -11,16 +11,15 @@
 
     <title>U.A.T</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/datepicker.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
     <script src="{{ asset('js/sweetalert2@8.js') }}"></script>
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-
+   <script src="{{ asset('js/select2.min.js') }}"></script>
+   
     <!-- Fonts -->
 
     <!-- Disable tap highlight on IE -->
@@ -340,6 +339,10 @@
 @if($model_name ?? '' == 'gl_account' && $view_type ?? '' == 'index')
     @include('gl_accounts.filter-modal')
 @endif
-
+ <!-- Scripts -->
+ 
+<script>
+     $('.select_search').select2();
+</script>
 </body>
 </html>

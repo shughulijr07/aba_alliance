@@ -19,7 +19,6 @@
 
             <!--actions' menu starts here -->
             <!--actions' menu ends here -->
-    
         </div>
     </div>
     <div class="tab-content">
