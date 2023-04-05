@@ -111,6 +111,34 @@ class Staff extends Model
 
     }
 
+    public static function new_get_valid_staff_list($supervisor_id){
+        $staff_list = [];
+
+        $all_staff = Staff::where('supervisor_id', $supervisor_id)->get();
+
+
+        if ( auth()->user()->role_id == 1){
+
+            $staff_list = $all_staff;
+
+        }else{
+
+            foreach ($all_staff as $staff){
+
+                if( isset($staff->user->role_id) ){
+                    $staff_role = $staff->user->role_id;
+                    if( !in_array($staff_role, [1,8]) ){
+                        $staff_list[] = $staff;
+                    }
+                }
+            }
+
+        }
+
+        return $staff_list;
+
+    }
+
     public static function get_valid_staff_list(){
         $staff_list = [];
 

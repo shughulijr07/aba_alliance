@@ -259,11 +259,17 @@
         <div class="menu-content" id="timesheet-menu-content">
             @can('view-menu','my_time_sheets_menu_item')
                 <li>
+                    <a href="{{url('/time-sheets')}}">
+                        <i class="metismenu-icon  pe-7s-date">
+                        </i>Time Sheets
+                    </a>
+                </li>
+                {{-- <li>
                     <a href="{{url('/new_time_sheet')}}">
                         <i class="metismenu-icon  pe-7s-date">
                         </i>New Time Sheet
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="/time_sheets/10">
                         <i class="metismenu-icon pe-7s-folder">

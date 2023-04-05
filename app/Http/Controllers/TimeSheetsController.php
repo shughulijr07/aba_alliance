@@ -16,6 +16,8 @@ use App\Models\Leave;
 use App\Models\MyFunctions;
 use App\Models\Project;
 use App\Models\Staff;
+use App\Models\Supervisor;
+use App\Models\Task;
 use App\Models\TimeSheet;
 use App\Models\TimeSheetApproval;
 use App\Models\TimeSheetChangedSupervisor;
@@ -26,6 +28,7 @@ use App\Models\TimeSheetReject;
 use App\Models\TimeSheetReturn;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
 class TimeSheetsController extends Controller
@@ -66,6 +69,28 @@ class TimeSheetsController extends Controller
         return view('time_sheets.index',
             compact('time_sheets', 'time_sheet_statuses', 'time_sheet_status', 'time_sheet_months',
                 'model_name', 'controller_name', 'view_type'));
+    }  
+    
+    public function time_sheets()
+    {
+        if (Gate::denies('access',['time_sheets','view'])){
+            abort(403, 'Access Denied');
+        }
+        
+
+        $employee_id = auth()->user()->staff->id;
+        $supv = Supervisor::where('staff_id', $employee_id)->first();
+        //for my time sheets
+        $time_sheets = DB::table('time_sheets')
+                       ->join('staff', 'time_sheets.staff_id', '=', 'staff.id')
+                       ->select('time_sheets.*', 'staff.first_name','staff.middle_name','staff.last_name')
+                        ->where('responsible_spv', $supv->id)
+                       ->get();
+
+
+        return view('time_sheets.time-sheets')
+        ->with('time_sheets', $time_sheets)
+                    ;
     }
 
 
@@ -249,12 +274,12 @@ class TimeSheetsController extends Controller
         $system_settings = GeneralSetting::find(1);
         $supervisors_mode = $system_settings->supervisors_mode;
         $supervisor_id = $current_logged_staff->supervisor_id;
+        $my_supv_id = Supervisor::where('staff_id', $current_logged_staff->id)->first();
         //override supervisor settings if no supervisor have been assigned to this staff
         if($supervisor_id == null || $supervisor_id == ''){ $supervisors_mode = '2'; } //'2' => 'Selection From List'
 
-
         $timeSheetSupervisors = Staff::get_supervisors('2');
-        $employees = Staff::get_valid_staff_list();
+        $employees = Staff::new_get_valid_staff_list($my_supv_id->id);
         $responsible_spv = '';
         $year = date('Y');
         $months = TimeSheet::$months;
@@ -586,24 +611,44 @@ class TimeSheetsController extends Controller
     }
 
     public function timesheet_add_client(Request $request){
-        $data = request()->validate([
-            'time_sheet_id' => 'required',
-            'client_id' => 'required',
-           
-        ]);
-
-        TimesheetClient::create([
-            'time_sheet_id' => $data['time_sheet_id'],
-            'project_id' => $data['client_id'],
-        ]);
-        return redirect()->to('assign_client_task/'.$data['time_sheet_id']);
+        if ($request->has('mode')) {
+            if ($request->mode == "addclient") {
+                $data = request()->validate([
+                    'time_sheet_id' => 'required',
+                    'client_id' => 'required',
+                    // 'time_sheet_id' => 'required|unique:timesheet_clients,time_sheet_id,'.$request->input('time_sheet_id').',project_id,'.$request->input('client_id'),
+                   
+                ]);
+        
+                TimesheetClient::create([
+                    'time_sheet_id' => $data['time_sheet_id'],
+                    'project_id' => $data['client_id'],
+                ]);
+            }
+            if ($request->mode == "addtask") {
+                $data = request()->validate([
+                    'timesheet_client_id' => 'required',
+                    'task_name' => 'required',
+                    'time_sheet_id' => 'required',
+                   
+                ]);
+        
+                Task::create([
+                    'timesheet_client_id' => $data['timesheet_client_id'],
+                    'task_name' => $data['task_name'],
+                ]);
+            }
+            return redirect()->to('assign_client_task/'.$data['time_sheet_id']);
+        }
+       return redirect()->back();
     }
 
     public function assign_client_task($id){
         $clients = Project::all();
         $time_sheet = TimeSheet::find($id);
         if ($time_sheet) {
-            $supervisor = Staff::find($time_sheet->responsible_spv);
+            $super = Supervisor::find($time_sheet->responsible_spv);
+            $supervisor = Staff::find($super->staff_id);
         $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
         $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
         $clientsheets = TimesheetClient::where('time_sheet_id', $time_sheet->id)->get();
@@ -622,21 +667,23 @@ class TimeSheetsController extends Controller
     public function new_storeForAnotherStaff(Request $request)
     {
 
+        // dd(auth()->user()->staff->supervisor_id);
         $data = request()->validate([
             'staff_id' => 'required',
-            'responsible_spv' =>  'nullable|required',
+            // 'responsible_spv' =>  'nullable|required',
             'year' =>  'required',
             'month' =>  'required',
         ]);
 
-
+       
 
         //get timesheet header data
         $staff_id = $data['staff_id'];
         if (session('role') == 1) {
             $responsible_spv = $data['responsible_spv'];
         } else {
-            $responsible_spv = auth()->user()->staff->supervisor_id;
+            $supv = Staff::find($staff_id);
+            $responsible_spv = $supv->supervisor_id;
         }
         
         
@@ -657,7 +704,7 @@ class TimeSheetsController extends Controller
             $time_sheet->year = $year;
             $time_sheet->month = $month;
             $time_sheet->responsible_spv = $responsible_spv;
-            $time_sheet->status = '20'; //it goes to spv direct as submitted because it was not created by staff directly
+            $time_sheet->status = '10'; //it goes to spv direct as submitted because it was not created by staff directly
             $time_sheet->transferred_to_nav = 'no';
             $time_sheet->save();
 
@@ -1248,6 +1295,18 @@ class TimeSheetsController extends Controller
                 'model_name', 'controller_name', 'view_type'));
 
 
+    }
+
+    public function preview_timesheet(Request $request){
+        $time_sheet = TimeSheet::find($request->id);
+        $responsible_spv = $time_sheet->responsible_spv;
+        $supervisor = Staff::find($responsible_spv);
+        $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
+        $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
+
+      return view('time_sheets.preview')
+              ->with('spv_name', $spv_name)
+              ->with('employee_name', $employee_name);
     }
 
 

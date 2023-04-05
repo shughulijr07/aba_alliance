@@ -24,6 +24,26 @@ class TimeSheet extends Model
         '99' => 'Rejected',
     ];
 
+    const TIMESHEET_STATUS = [
+        ['id'=>0, 'name'=>'Returned For Correction'],
+        ['id'=>10, 'name'=>'Saved To Drafts'],
+        ['id'=>20, 'name'=>'Waiting For Supervisor Approval'],
+        ['id'=>30, 'name'=>'Waiting For HRM Approval'],
+        ['id'=>40, 'name'=>'Waiting For MD Approval'],
+        ['id'=>50, 'name'=>'Approved'],
+        ['id'=>59, 'name'=>'Rejected'],
+    ];
+
+    public static function getStatus()
+    {
+        return collect(static::TIMESHEET_STATUS);//->firstWhere('id', $this->list_education_level)['edulevel'] ?? '';
+    }
+
+    public static function findStatus($id){
+        $collection = collect(static::TIMESHEET_STATUS);
+        return $collection->firstWhere('id', $id)['name'] ?? "";
+    }
+
     public static $months = [
         '1'  => 'January',
         '2'  => 'February',
