@@ -17,11 +17,6 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->foreignId('timesheet_client_id')->constrained('timesheet_clients')->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
-            $table->integer('hour')->nullable();
-            $table->integer('task_day')->nullable();
-            $table->string('day_date')->nullable();
-            $table->string('start_time')->nullable();
-            $table->string('end_time')->nullable();
             $table->string('task_name');
             $table->string('status')->default('pending');
             $table->text('description')->nullable();

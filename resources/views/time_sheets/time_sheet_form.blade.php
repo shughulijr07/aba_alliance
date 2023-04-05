@@ -187,7 +187,8 @@
                                    @php
                                         $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
                                         $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                        $hour = \App\Models\Task::where('timesheet_client_id', $client_data->id)->where('task_day', $d)->sum('hour');
+                                        $taskIds = \App\Models\Task::where('timesheet_client_id', $client_data->id)->pluck('id');
+                                        $hour =  \App\Models\TaskProgress::whereIn('task_id', $taskIds)->where('task_day', $d)->sum('hour');
                                         $hour = ($hour > 0) ? $hour : '' ;
                                    @endphp
                                     <td class="project-column project--{{$client_data->number}} date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">

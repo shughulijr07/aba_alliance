@@ -18,6 +18,7 @@ use App\Models\Project;
 use App\Models\Staff;
 use App\Models\Supervisor;
 use App\Models\Task;
+use App\Models\TaskProgress;
 use App\Models\TimeSheet;
 use App\Models\TimeSheetApproval;
 use App\Models\TimeSheetChangedSupervisor;
@@ -1307,10 +1308,18 @@ class TimeSheetsController extends Controller
             'hour' =>  'required',
         ]);
 
-        $task = Task::find($data['task_id']);
+        $task = new TaskProgress();
+        if ($request->has('progress_id') && $request->progress_id != "") {
+            $task = TaskProgress::find($request->progress_id);
+        }
+        $task_update = Task::find($data['task_id']);
+        $task_update->status = $data['status'];
+        $task_update->save();
+        $task->task_id = $data['task_id'];
         $task->day_date = $data['day_date'];
         $task->task_day = $data['task_day'];
-        $task->status = $data['status'];
+        $task->task_status = $data['status'];
+        $task->timesheet_client_id = $data['timesheet_client_id'];
         $task->hour = $data['hour'];
         $task->save();
         return redirect()->back();
@@ -1319,10 +1328,13 @@ class TimeSheetsController extends Controller
     public function fill_timesheet(Request $request){
         $client = TimesheetClient::findClient($request->timesheet_client);
         $time_sheet = TimeSheet::find($request->time_sheet);
-        $tasks = Task::where('timesheet_client_id', $request->timesheet_client)->where('status', '!=', 'complete')->get();
+        $tasks = Task::where('timesheet_client_id', $request->timesheet_client)->get();
+        $progreIds = TaskProgress::where('timesheet_client_id', $request->timesheet_client)->pluck('task_id');
+        $not_in_progress = DB::table('tasks')->where('timesheet_client_id', $request->timesheet_client)->whereNotIn('id', $progreIds)->get();
         return view('time_sheets.fill_timesheet')
                     ->with('time_sheet', $time_sheet)
                     ->with('tasks', $tasks)
+                    ->with('not_in_progress', $not_in_progress)
                     ->with('day', $request->d)
                     ->with('client', $client);
     }
