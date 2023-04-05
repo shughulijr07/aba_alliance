@@ -1297,15 +1297,56 @@ class TimeSheetsController extends Controller
 
     }
 
+    public function fill_day_task(Request $request){
+        $data = request()->validate([
+            'task_id' => 'required',
+            'day_date' =>  'required',
+            'timesheet_client_id' =>  'required',
+            'task_day' =>  'required',
+            'status' =>  'required',
+            'hour' =>  'required',
+        ]);
+
+        $task = Task::find($data['task_id']);
+        $task->day_date = $data['day_date'];
+        $task->task_day = $data['task_day'];
+        $task->status = $data['status'];
+        $task->hour = $data['hour'];
+        $task->save();
+        return redirect()->back();
+    }
+
+    public function fill_timesheet(Request $request){
+        $client = TimesheetClient::findClient($request->timesheet_client);
+        $time_sheet = TimeSheet::find($request->time_sheet);
+        $tasks = Task::where('timesheet_client_id', $request->timesheet_client)->where('status', '!=', 'complete')->get();
+        return view('time_sheets.fill_timesheet')
+                    ->with('time_sheet', $time_sheet)
+                    ->with('tasks', $tasks)
+                    ->with('day', $request->d)
+                    ->with('client', $client);
+    }
+
     public function preview_timesheet(Request $request){
-        $time_sheet = TimeSheet::find($request->id);
+        $id = $request->sheet;
+        $time_sheet = TimeSheet::find($id);
         $responsible_spv = $time_sheet->responsible_spv;
         $supervisor = Staff::find($responsible_spv);
         $spv_name = ucwords($supervisor->first_name.' '.$supervisor->last_name);
         $employee_name = ucwords($time_sheet->staff->first_name.' '.$time_sheet->staff->last_name);
-
+        $clients = TimesheetClient::find_client_timesheet($id);
+        $days_in_month = cal_days_in_month(CAL_GREGORIAN, $time_sheet->month, $time_sheet->year);
+        $system_settings = GeneralSetting::find(1);
+        $supervisors_mode = $system_settings->supervisors_mode;
+        $holidays = Holiday::get_all_holidays_in_a_year($time_sheet->year)['arrays'];
       return view('time_sheets.preview')
+              ->with('holidays', $holidays)
+              ->with('time_sheet', $time_sheet)
+              ->with('responsible_spv', $responsible_spv)
+              ->with('supervisors_mode', $supervisors_mode)
               ->with('spv_name', $spv_name)
+              ->with('days_in_month', $days_in_month)
+              ->with('clients', $clients)
               ->with('employee_name', $employee_name);
     }
 

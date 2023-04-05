@@ -16,7 +16,7 @@
                             Please correct information in the timesheet as instructed the submit it again
                         </div>
                     @elseif( $time_sheet->status == '10')
-                        <div class="text-primary">Time Sheet Draft For The Month Of {{$months[$time_sheet->month]}}</div>
+                        <div class="text-primary">Time Sheet Draft For The Month Of {{\App\Models\TimeSheet::$months[$time_sheet->month]}}</div>
                         <div class="page-title-subheading">
                             After filling the Time Sheet you can save it to drafts again or submit it.
                         </div>
@@ -69,7 +69,7 @@
                                     <div class="dropdown-menu-header-inner bg-heavy-rain">
                                         <div class="menu-header-image opacity-1" style="background-image: url('assets/images/dropdown-header/city3.jpg');"></div>
                                         <div class="menu-header-content text-dark">
-                                            <h5 class="menu-header-title">{{$time_sheet_statuses[$time_sheet->status]}}</h5>
+                                            <h5 class="menu-header-title">{{\App\Models\TimeSheet::findStatus($time_sheet->status)}}</h5>
                                             <h6 class="menu-header-subtitle"></h6>
                                         </div>
                                     </div>
@@ -184,22 +184,22 @@
                                     <i class="badge badge-dot badge-dot-xl badge-danger"> </i>
                                 </span>
                                         <div class="vertical-timeline-element-content bounce-in">
-                                            <h4 class="timeline-title text-danger">LOE For Projects</h4>
+                                            <h4 class="timeline-title text-danger">LOE For clients</h4>
                                             <table class="table table-sm table-bordered">
                                                 <thead>
                                                 <tr class="bg-primary text-white">
-                                                    <th class="">Project</th>
+                                                    <th class="">CLIENTS</th>
                                                     <th class="text-right">Hrs</th>
                                                     <th class="text-right"> % </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <?php $n = 1; ?>
-                                                @foreach($projects as $project_number=>$project_name)
+                                                @foreach($clients as $client)
                                                     <tr>
-                                                        <td >{{$project_name}}</td>
-                                                        <td class="no-wrap text-right" id="hrs--project--{{$project_number}}">0</td>
-                                                        <td class="no-wrap text-right text-danger" id="percentage--project--{{$project_number}}">0.0</td>
+                                                        <td >{{$client->name}}</td>
+                                                        <td class="no-wrap text-right" id="hrs--client--{{$client->number}}">0</td>
+                                                        <td class="no-wrap text-right text-danger" id="percentage--client--{{$client->number}}">0.0</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

@@ -151,6 +151,9 @@ Route::post('/reject_leave_plan',[LeavePlansController::class,'rejectLeavePlan']
 
 
 /************ TIME SHEETS MANAGEMENT ROUTES *************************/
+Route::post('/fill_day_task',[TimeSheetsController::class,'fill_day_task'])->name('fill_day_task');
+Route::get('/fill-timesheet',[TimeSheetsController::class,'fill_timesheet'])->name('fill-timesheet');
+Route::get('/view-sheet',[TimeSheetsController::class,'preview_timesheet'])->name('view-sheet');
 Route::get('/new_time_sheet',[TimeSheetsController::class,'create']);
 Route::get('/time-sheets',[TimeSheetsController::class,'time_sheets']);
 Route::post('/timesheet-add-client',[TimeSheetsController::class,'timesheet_add_client'])->name('timesheet-add-client');

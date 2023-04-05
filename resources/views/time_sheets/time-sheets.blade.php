@@ -48,7 +48,7 @@
                             <td>{{$time_sheet->created_at}}</td>
                             <td>
                                 <a href="/assign_client_task/{{$time_sheet->id}}" class="btn btn-sm btn-info">Edit</a>
-                                <a href="/assign_client_task/{{$time_sheet->id}}" class="btn btn-sm btn-success">view</a>
+                                <a href="{{ route('view-sheet', ['sheet' => $time_sheet->id]) }}" class="btn btn-sm btn-success">view</a>
                                 <a href="#" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>

@@ -37,12 +37,13 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <select name="responsible_spv" id="responsible_spv" class="form-control @error('country') is-invalid @enderror" @if($supervisors_mode == '1') readonly @endif>
-                                    @if($supervisors_mode == '2')<option value="">Select Supervisor</option>@endif
+                                    <option value="{{$responsible_spv}}">{{$spv_name}}</option>
+                                    {{-- @if($supervisors_mode == '2')<option value="">Select Supervisor</option>@endif
                                     @foreach($timeSheetSupervisors as $timeSheetSupervisor)
                                         <option value="{{$timeSheetSupervisor->id}}" @if(($timeSheetSupervisor->id == old('responsible_spv')) || ($timeSheetSupervisor->id == $responsible_spv)) selected @endif>
                                             {{ucwords($timeSheetSupervisor->first_name.' '.$timeSheetSupervisor->last_name)}}
                                         </option>
-                                    @endforeach
+                                    @endforeach --}}
                                 </select>
 
                                 @error('responsible_spv')
@@ -67,7 +68,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <select name="month" id="month" class="form-control @error('month') is-invalid @enderror" readonly>
-                                    @foreach($months as $value => $month_name)
+                                    @foreach(\App\Models\TimeSheet::$months as $value => $month_name)
                                         @if($value == $time_sheet->month) <option value="{{$value}}" selected>{{$month_name}}</option> @endif
                                     @endforeach
                                 </select>
@@ -102,10 +103,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($projects as $project_number=>$project_name)
+                        @foreach($clients as $client_data2)
                             <tr>
-                                <td class="no-wrap ctitle">{{$project_name}}</td>
-                                <td class="no-wrap total-one-project" id="total--project--{{$project_number}}">0</td>
+                                <td class="no-wrap ctitle">{{$client_data2->name}}</td>
+                                <td class="no-wrap total-one-project" id="total--project--{{$client_data2->number}}">0</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -122,7 +123,7 @@
                         </tr>
 
 
-                        <tr class="bg-light-dark">
+                        {{-- <tr class="bg-light-dark">
                             <td class="no-wrap ctitle">Vacation</td>
                             <td class="no-wrap total-one-vacation" id="total--vacation--1">0</td>
                         </tr>
@@ -141,7 +142,7 @@
                         <tr class=" bg-danger text-white">
                             <th class="no-wrap ctitle">Grand Total Hours</th>
                             <th class="no-wrap" id="grand_total_hrs">0</th>
-                        </tr>
+                        </tr> --}}
                         </tfoot>
 
                     </table>
@@ -180,21 +181,18 @@
 
                         <!-- Table Body Starts Here, All Projects Entries Are Found Here -->
                         <tbody>
-                        @foreach($projects as $project_number=>$project_name)
-                            <tr class="project-row" id="project--{{$project_number}}">
+                        @foreach($clients as $client_data)
+                            <tr class="project-row" id="project--{{$client_data->number}}">
                                 @for( $d=1 ; $d<=$days_in_month; $d++)
-                                    <?php
-                                    $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                    $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                    ?>
-                                    <td class="project-column project--{{$project_number}} date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
-                                        <input
-                                                class="column-input column-day-{{$d}} project--{{$d}}"
-                                                name="project--{{$project_number}}--{{$d}}"
-                                                id="project--{{$project_number}}--{{$d}}"
-                                                value="@if( in_array( 'project--'.$project_number.'--'.$d ,array_keys($time_sheet_lines))){{ $time_sheet_lines['project--'.$project_number.'--'.$d]}}@endif"
-                                                autocomplete="off"
-                                        >
+                                   @php
+                                        $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
+                                        $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
+                                        $hour = \App\Models\Task::where('timesheet_client_id', $client_data->id)->where('task_day', $d)->sum('hour');
+                                        $hour = ($hour > 0) ? $hour : '' ;
+                                   @endphp
+                                    <td class="project-column project--{{$client_data->number}} date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
+                                        {{-- <input type="" class="column-input"  > --}}
+                                        <a href="{{ route('fill-timesheet', ['timesheet_client'=>$client_data->id,'time_sheet'=>$time_sheet->id,'d' => $d]) }}" class="btn w-100 h-100">{{$hour}}</a>
                                     </td>
                                 @endfor
                             </tr>
@@ -230,95 +228,6 @@
 
 
 
-                        <!-- Vacation Starts Here -->
-                        <tr class="vacation-row bg-light-dark" id="project--1">
-                            @for( $d=1 ; $d<=$days_in_month; $d++)
-                                <?php
-                                $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                ?>
-                                <td class="vacation-column vacation--1 date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
-                                    <input
-                                            class="column-input column-day-{{$d}} vacation--{{$d}}"
-                                            name="vacation--1--{{$d}}" id="vacation--1--{{$d}}"
-
-                                            @if($time_sheet->status == 10 && $leave_timesheet_link_mode == 2 &&
-                                               ( in_array($full_date,$staff_annual_leave_dates) ||
-                                                 in_array($full_date,$staff_paternity_leave_dates) ||
-                                                 in_array($full_date,$staff_maternity_leave_dates) )
-                                            )
-                                            value="24"
-                                            @else
-                                            value="@if( in_array( 'vacation--1--'.$d ,array_keys($time_sheet_lines))){{ $time_sheet_lines['vacation--1--'.$d]}}@endif"
-                                            @endif
-                                            autocomplete="off"
-                                    >
-                                </td>
-                            @endfor
-                        </tr>
-                        <!-- Vacation Ends Here -->
-
-
-                        <!-- Sick Starts Here -->
-                        <tr class="sick-row">
-                            @for( $d=1 ; $d<=$days_in_month; $d++)
-                                <?php
-                                $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                ?>
-                                <td class="sick-column sick--1 date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
-                                    <input
-                                            class="column-input column-day-{{$d}} sick--{{$d}}"
-                                            name="sick--1--{{$d}}" id="sick--1--{{$d}}"
-                                            value="@if( in_array( 'sick--1--'.$d ,array_keys($time_sheet_lines))){{ $time_sheet_lines['sick--1--'.$d]}}@endif"
-                                            autocomplete="off"
-                                    >
-                                </td>
-                            @endfor
-                        </tr>
-                        <!-- Sick Ends Here -->
-
-
-
-                        <!-- Holiday Starts Here -->
-                        <tr class="holiday-row bg-light-dark">
-                            @for( $d=1 ; $d<=$days_in_month; $d++)
-                                <?php
-                                $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                ?>
-                                <td class="holiday-column holiday--1 date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
-                                    <input
-                                            class="column-input column-day-{{$d}} holiday--{{$d}}"
-                                            name="holiday--1--{{$d}}" id="holiday--1--{{$d}}"
-                                            value="@if( in_array( 'holiday--1--'.$d ,array_keys($time_sheet_lines))){{ $time_sheet_lines['holiday--1--'.$d]}}@endif"
-                                            autocomplete="off"
-                                    >
-                                </td>
-                            @endfor
-                        </tr>
-                        <!-- Holiday Ends Here -->
-
-
-
-                        <!-- Other Starts Here -->
-                        <tr class="other-row">
-                            @for( $d=1 ; $d<=$days_in_month; $d++)
-                                <?php
-                                $day_name = date('D',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                $full_date = date('d-m-Y',strtotime($d.'-'.$time_sheet->month.'-'.$time_sheet->year));
-                                ?>
-                                <td class="other-column other--1 date--{{$d}}  @if($day_name == 'Sat' || $day_name == 'Sun') bg-weekend @endif   @if( in_array($full_date,array_keys($holidays))) bg-holiday @endif">
-                                    <input
-                                            class="column-input column-day-{{$d}} other--{{$d}}"
-                                            name="other--1--{{$d}}" id="other--1--{{$d}}"
-                                            value="@if( in_array( 'other--1--'.$d ,array_keys($time_sheet_lines))){{ $time_sheet_lines['other--1--'.$d]}}@endif"
-                                            autocomplete="off"
-                                    >
-                                </td>
-                            @endfor
-                        </tr>
-                        <!-- Other Ends Here -->
 
 
 
