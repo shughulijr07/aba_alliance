@@ -412,7 +412,7 @@
 
 
     <!-- Travel Management Menu -->
-     @can('view-menu','travel_menu')
+     {{-- @can('view-menu','travel_menu')
         <li class="app-sidebar__heading menu-title" id="travel-menu-title">Travel Authorization</li>
         <div class="menu-content" id="travel-menu-content">
             @can('view-menu','my_travel_requests_menu_item')
@@ -549,11 +549,11 @@
             @endcan
         </div>
 
-    @endcan 
+    @endcan  --}}
     <!-- Travel Menu -->
 
     <!-- Requisition Menu -->
-    @can('view-menu','travel_menu')
+    {{-- @can('view-menu','travel_menu')
         <li class="app-sidebar__heading menu-title" id="requisition-menu-title">Requisition</li>
         <div class="menu-content" id="requisition-menu-content">
             @can('view-menu','my_travel_requests_menu_item')
@@ -690,11 +690,11 @@
             @endcan
         </div>
 
-    @endcan
+    @endcan --}}
     <!-- Requisition Menu -->
 
     <!-- Advance Payment Menu -->
-    @can('view-menu','advance_payment_requests_menu')
+    {{-- @can('view-menu','advance_payment_requests_menu')
         <li class="app-sidebar__heading menu-title" id="payment-menu-title">Advance Payment</li>
         <div class="menu-content" id="payment-menu-content">
             @can('view-menu','my_advance_payment_requests_menu_item')
@@ -831,7 +831,7 @@
             @endcan
         </div>
 
-    @endcan
+    @endcan --}}
 <!-- Requisition Menu -->
 
  <!-- Requisition Menu -->
