@@ -3,11 +3,11 @@
     <div class="col-md-12" >
         <div class="position-relative form-group">
             <label for="project_id" class="">
-                <span>Project</span>
+                <span>Client</span>
                 <span class="text-danger description_required">*</span>
             </label>
             <select name="project_id" id="project_id" class="form-control @error('project_id') is-invalid @enderror">
-                <option value="">Select Project</option>
+                <option value="">Select Client</option>
                 @foreach($projects as $project)
                     <option value="{{$project->id}}" @if(($project->id == old('project_id')) || ($project->id == $activity->project_id)) selected @endif>
                         {{$project->number." : ".$project->name}}

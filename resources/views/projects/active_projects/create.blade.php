@@ -10,9 +10,9 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div>
-                    <div class="text-primary">Set Active Projects</div>
+                    <div class="text-primary">Set Active Clients</div>
                     <div class="page-title-subheading">
-                        Set active projects by ticking on the checkboxes for project you want to activate
+                        Set active clients by ticking on the checkboxes for client you want to activate
                     </div>
                 </div>
             </div>

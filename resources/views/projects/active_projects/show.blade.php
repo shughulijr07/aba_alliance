@@ -12,7 +12,7 @@
                 </div>
                 <div>
                     <div class="text-primary">
-                        Active Projects For The Month of <span class="text-danger">{{$months[(int) $active_project->month]}}</span>
+                        Active Clients For The Month of <span class="text-danger">{{$months[(int) $active_project->month]}}</span>
                         in <span class="text-danger">{{$active_project->year}}</span>
                     </div>
                     <div class="page-title-subheading"></div>
@@ -30,15 +30,15 @@
     <!-- data 1 -->
     <div class="main-card mb-3 card">
         <div class="card-body">
-            <h5 class="card-title text-danger">Active Projects List</h5>
+            <h5 class="card-title text-danger">Active Clients List</h5>
             <div class="row">
                 <div class="col-md-12">
                     <table style="width: 100%;" id="example1" class="table table-hover table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Project Name.</th>
-                            <th>Project No.</th>
+                            <th>Client Name.</th>
+                            <th>Client No.</th>
                         </tr>
                         </thead>
                         <tbody>

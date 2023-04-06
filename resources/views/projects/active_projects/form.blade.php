@@ -63,7 +63,7 @@
 
                                 <div class="col-md-12">
                                     <div class="position-relative form-group">
-                                        <button class="mt-2 btn btn-primary">Set Active Projects</button>
+                                        <button class="mt-2 btn btn-primary">Set Active Clients</button>
                                     </div>
                                 </div>
 
@@ -81,7 +81,7 @@
     <div class="col-md-8">
         <div class="main-card mb-3 card">
             <div class="card-body">
-                <h5 class="card-title text-danger">Projects List</h5>
+                <h5 class="card-title text-danger">Clients List</h5>
                 <div class="row">
                     <div class="col-md-12">
                         @error('projects')
@@ -95,8 +95,8 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Project Name.</th>
-                                <th>Project No.</th>
+                                <th>Client Name.</th>
+                                <th>Client No.</th>
                                 <th style="width: 15%;" class="text-center">
                                     <input type="checkbox"  class="select-all-rows-checkbox" value="0">
                                 </th>

@@ -10,9 +10,9 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div>
-                    <div class="text-primary">Add New Project</div>
+                    <div class="text-primary">Add New Client</div>
                     <div class="page-title-subheading">
-                        Add new Project by completing the form below
+                        Add new Client by completing the form below
                     </div>
                 </div>
             </div>
@@ -27,10 +27,10 @@
         <div class="tab-pane tabs-animation fade show active" id="tab-content-0" role="tabpanel">
             <div class="main-card mb-3 card">
                 <div class="card-body">
-                    <h5 class="card-title">Project Form</h5>
+                    <h5 class="card-title">Client Form</h5>
                     <form action="/projects" method="POST">
                         @include('projects.projects.form')
-                        <button class="mt-2 btn btn-primary">Add Project</button>
+                        <button class="mt-2 btn btn-primary">Add Client</button>
                     </form>
                 </div>
             </div>

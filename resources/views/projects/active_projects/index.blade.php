@@ -10,7 +10,7 @@
                     <i class="fas fa-list-ul"></i>
                 </div>
                 <div>
-                    <div class="text-primary">List Of Active Projects (By Month)</div>
+                    <div class="text-primary">List Of Active Clients (By Month)</div>
                     <div class="page-title-subheading">
 
                     </div>

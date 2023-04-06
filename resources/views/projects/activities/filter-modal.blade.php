@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLongTitle">Projects Filtering Form <span class="text-primary" id="question-no-label"></span></h5>
+                <h5 class="modal-title" id="modalLongTitle">Client Filtering Form <span class="text-primary" id="question-no-label"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -18,9 +18,9 @@
                         <div class="form-row">
                             <div class="col-md-4">
                                 <div class="position-relative form-group">
-                                    <label for="project_id" class="">Project</label>
+                                    <label for="project_id" class="">Client</label>
                                     <select name="project_id" id="project_id" class="form-control filter-select" data-column="3">
-                                        <option value="">Select Project</option>
+                                        <option value="">Select Client</option>
 
                                         {{-- @foreach($projects as $project)
                                             <option value="{{$project->id}}">{{$project->name}}</option>

@@ -11,7 +11,7 @@
                 </div>
                 <div>
                     <div class="text-primary">
-                        Update Active Projects For The Month of <span class="text-danger">{{$months[$active_project->month]}}</span>
+                        Update Active Clients For The Month of <span class="text-danger">{{$months[$active_project->month]}}</span>
                         in <span class="text-danger">{{$active_project->year}}</span>
                     </div>
                     <div class="page-title-subheading"></div>

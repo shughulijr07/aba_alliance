@@ -10,7 +10,7 @@
                     <i class="fas fa-list-ul"></i>
                 </div>
                 <div>
-                    <div class="text-primary">List Project Activities</div>
+                    <div class="text-primary">List Client Activities</div>
                     <div class="page-title-subheading"></div>
                 </div>
             </div>
@@ -81,8 +81,8 @@
                         <th>#</th>
                         <th>Activity</th>
                         <th>Activity Code</th>
-                        <th>Project</th>
-                        <th>Project Code</th>
+                        <th>Client</th>
+                        <th>Client Code</th>
                         <th>Action</th>
                     </tr>
                     </thead>
