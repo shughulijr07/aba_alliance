@@ -61,7 +61,7 @@
                                                 <option value="">Select Supervisor</option>
                                                 @foreach($timeSheetSupervisors as $supervisor)
                                                     <option value="{{$supervisor->id}}" @if(($supervisor->id == old('responsible_spv')) ) selected @endif>
-                                                        {{ucwords($supervisor->first_name.' '.$supervisor->last_name)}}
+                                                        {{ucwords($supervisor->first_name.'  '.$supervisor->last_name)}}
                                                     </option>
                                                 @endforeach
                                             </select>
