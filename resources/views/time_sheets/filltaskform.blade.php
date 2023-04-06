@@ -13,14 +13,14 @@
         <div class="col-md-3">
             <select name="status" id="" class="form-control" required>
                 <option value="{{ $status }}">{{ $status }}</option>
-                <option value="complete">complete</option>
-                <option value="progress">progress</option>
+                <option value="complete">Complete</option>
+                <option value="progress">Progress</option>
             </select>
         </div>
         <div class="col-md-2"><input type="number" name="hour" min="0"
                 max="24" value="{{ $hour }}" class="form-control" required>
         </div>
         <div class="col-md-2"><button type="submit"
-                class="btn btn-primary btn-sm">update</button></div>
+                class="btn btn-primary btn-sm">Update</button></div>
     </div>
 </form>

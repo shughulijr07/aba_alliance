@@ -36,8 +36,13 @@
                                     <span>Supervisor</span>
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="responsible_spv" id="responsible_spv" class="form-control @error('country') is-invalid @enderror" @if($supervisors_mode == '1') readonly @endif>
-                                    <option value="{{$responsible_spv}}">{{$spv_name}}</option>
+
+                                   <input name="employee_name" id="employee_name" type="text" class="form-control @error('country') is-invalid @enderror" @if($supervisors_mode == '1') readonly @endif value="{{$responsible_spv}} name" readonly>
+
+                                {{-- <select name="responsible_spv" id="responsible_spv" class="form-control @error('country') is-invalid @enderror" @if($supervisors_mode == '1') readonly @endif>
+                                    <option value="{{$responsible_spv}}">{{$spv_name}}</option> --}}
+
+
                                     {{-- @if($supervisors_mode == '2')<option value="">Select Supervisor</option>@endif
                                     @foreach($timeSheetSupervisors as $timeSheetSupervisor)
                                         <option value="{{$timeSheetSupervisor->id}}" @if(($timeSheetSupervisor->id == old('responsible_spv')) || ($timeSheetSupervisor->id == $responsible_spv)) selected @endif>

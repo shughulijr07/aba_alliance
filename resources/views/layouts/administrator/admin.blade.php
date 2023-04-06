@@ -10,9 +10,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>U.A.T</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+    <!-- Scripts -->
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/datepicker.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2@8.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
 
     <!-- Fonts -->
 
@@ -20,6 +28,18 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Styles -->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/buttons.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/colReorder.dataTables.min.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+
+    {{-- <!-- Styles -->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
@@ -38,44 +58,7 @@
     <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-    <style>
-        /* .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .close {
-            color: #aaaaaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        } */
-    </style>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
 
 </head>
 
